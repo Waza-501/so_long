@@ -6,20 +6,31 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/13 10:02:14 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/02/19 19:08:26 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "so_long.h"
+#include "error_messages.h"
 
-int	file_check(char *file)
+void	open_map(char *path, t_map *map)
 {
-	int	i;
+	int		fd;
+	int		i;
+	int		bytes;
+	char 	buffer[2];
 
-	i = ft_strlen(file);
-	if (i < 4 || ft_strncmp(file[i - 4], ".ber", 4))
-		return (-1);
-	return (0);
+	i = 0;
+	bytes = 1;
+	buffer[1] = 0;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		error(ERR_FD);
+	while (bytes == 1)
+	{
+		bytes = read(fd, buffer, 1);
+		if (bytes != 1)
+			break;
+		
+	}
 }
-
-int	wall_check()

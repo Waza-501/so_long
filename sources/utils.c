@@ -6,12 +6,12 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 16:13:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/10 17:34:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/02/17 15:19:47 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
-#include "./includes/error_messages.h"
+#include "so_long.h"
+#include "error_messages.h"
 #include <errno.h>
 
 void	error(char *err_msg)
@@ -20,5 +20,15 @@ void	error(char *err_msg)
 	if (errno == 0)
 		ft_putendl_fd(err_msg, 2);
 	else
-		perror(errno);
+		perror(err_msg);
+}
+
+int	file_check(char *file)
+{
+	int	i;
+
+	i = ft_strlen(file);
+	if (i < 4 || ft_strncmp(&file[i - 4], ".ber", 4))
+		return (-1);
+	return (0);
 }
