@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/17 19:27:16 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/02/22 13:04:17 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct s_map
 	int		y;
 	int		collected;
 }					t_map;
+
+
+typedef struct s_data
+{
+	t_map	*map;
+}					t_data;
 
 /*map_check*/
 int			file_check(char *file);

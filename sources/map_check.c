@@ -6,14 +6,14 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/19 19:08:26 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/02/23 15:16:08 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "error_messages.h"
 
-void	open_map(char *path, t_map *map)
+void	open_map(char *path, t_data *data)
 {
 	int		fd;
 	int		i;
@@ -31,6 +31,9 @@ void	open_map(char *path, t_map *map)
 		bytes = read(fd, buffer, 1);
 		if (bytes != 1)
 			break;
-		
+		if (buffer[0] != '\n' && buffer[0] != '\0')
+			data->map->map[i] = ft_strjoin(data->map->map[i], buffer);
+		else
+			i++;
 	}
 }
