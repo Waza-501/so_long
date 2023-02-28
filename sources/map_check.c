@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/23 15:16:08 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/02/28 14:42:34 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	open_map(char *path, t_data *data)
 	int		fd;
 	int		i;
 	int		bytes;
-	char 	buffer[2];
+	char	buffer[2];
 
 	i = 0;
 	bytes = 1;
@@ -30,7 +30,7 @@ void	open_map(char *path, t_data *data)
 	{
 		bytes = read(fd, buffer, 1);
 		if (bytes != 1)
-			break;
+			break ;
 		if (buffer[0] != '\n' && buffer[0] != '\0')
 			data->map->map[i] = ft_strjoin(data->map->map[i], buffer);
 		else
