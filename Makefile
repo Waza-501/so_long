@@ -6,9 +6,9 @@ MLX_FLAGS :=	-framework Cocoa -framework OpenGL -framework IOKit
 LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
-SOURCES	:=	so_long.c\
-			map_check.c\
+SOURCES	:=	map_check.c\
 			utils.c\
+			so_long.c\
 
 INCLUDE_DIR :=	./includes
 HEADERS :=		-I ./includes -I ./libraries/libft/header
