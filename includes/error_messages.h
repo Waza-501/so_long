@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 15:04:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/17 19:47:32 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/10 13:56:22 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define ERR_INPUT		"Input error. Please format it as ./so_long <MAP FILE>"
 # define ERR_FT			"File type incorrect. Please use maps ending in .ber"
 # define ERR_FD			"Couldn't open file. Please try again."
+# define ERR_MEM		"Memory relates issue. Please try again."
 
 
 #endif

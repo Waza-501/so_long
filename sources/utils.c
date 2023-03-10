@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 16:13:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/17 15:19:47 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/10 13:57:00 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void	error(char *err_msg)
 		ft_putendl_fd(err_msg, 2);
 	else
 		perror(err_msg);
+}
+
+void	*ft_realloc(void *ptr, size_t size)
+{
+	char	*ret;
+
+	ret = ft_calloc(1, size);
+	if (ret == NULL)
+		exit(ERR_MEM);
+	ft_memcpy(ret, ptr, size);
+	free (ptr);
+	return (ret);
 }
 
 int	file_check(char *file)
