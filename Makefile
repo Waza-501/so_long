@@ -1,7 +1,7 @@
 NAME :=			so_long
 CC := 			gcc
 CFLAGS :=		-Wall -Werror -Wextra -g
-MLX_FLAGS :=	-framework Cocoa -framework OpenGL -framework IOKit
+MLX_FLAGS :=	-I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 
 LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
@@ -21,7 +21,7 @@ OBJECTS :=		$(addprefix $(OBJECT_DIR)/, $(SOURCES:.c=.o))
 all:	libraries $(NAME)
 
 $(NAME):		$(OBJECTS) 
-					$(CC) $(FLAGS) $(LIBRARIES) -o $@ $^ $(HEADERS)
+					$(CC) $(FLAGS) $(MLX_FLAGS) $(LIBRARIES) -o $@ $^ $(HEADERS)
 
 
 $(OBJECT_DIR)/%.o:	$(SOURCE_DIR)/%.c
