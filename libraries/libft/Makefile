@@ -6,11 +6,13 @@
 #    By: ohearn <ohearn@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/11 20:08:26 by ohearn        #+#    #+#                  #
-#    Updated: 2023/02/01 16:31:43 by ohearn        ########   odam.nl          #
+#    Updated: 2023/03/21 13:32:07 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=		ft_printf.c\
+SRCS	=		get_next_line.c\
+				get_next_line_utils.c\
+				ft_printf.c\
 				fc_print_cha.c\
 				fc_print_dec.c\
 				fc_print_hex.c\

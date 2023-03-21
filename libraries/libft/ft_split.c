@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 14:20:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/01/25 11:36:02 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/21 13:35:08 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ static int	counter(char const *s, char c)
 	return (count);
 }
 
-static void	free_strings(char **strings)
-{
-	int		i;
+// static void	free_strings(char **strings)
+// {
+// 	int		i;
 
-	i = 0;
-	while (strings[i])
-	{
-		free(strings[i]);
-		i++;
-	}
-	free(strings);
-}
+// 	i = 0;
+// 	while (strings[i])
+// 	{
+// 		free(strings[i]);
+// 		i++;
+// 	}
+// 	free(strings);
+// }
 
 static int	splitter(char **strings, char const *s, char c, int wordcount)
 {
@@ -63,7 +63,7 @@ static int	splitter(char **strings, char const *s, char c, int wordcount)
 		strings[tally] = ft_substr(s, 0, i);
 		if (!strings[tally])
 		{
-			free_strings(strings);
+			free_strings(strings, 0, 0);
 			strings = NULL;
 			return (-1);
 		}

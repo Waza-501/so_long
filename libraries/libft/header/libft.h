@@ -6,12 +6,16 @@
 /*   By: ohearn <ohearn@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/11 20:49:31 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/02/02 13:52:13 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/21 13:34:54 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,6 +29,17 @@ typedef struct s_list
 /*My own functions*/
 
 void		error_message(char *string);
+
+/* GNL, hopefully temporary*/
+
+char		*get_next_line(int fd);
+void		read_file(int fd, char **stash, char *buffer);
+char		*return_line(int cntr, char *stash);
+char		*save_leftovers(int cntr, char *stash);
+void		free_strings(char **string, char **string2, char **string3);
+void		read_line(int fd, char **stash, char **line);
+char		*print_line(char **stash, char **temp);
+int			nl_checker(const char *s);
 
 /* Printf files not included in libft*/
 
