@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/07 10:56:57 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/21 13:35:37 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/22 14:47:20 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 
 void	free_strings(char **string, char **string2, char **string3)
 {
-	free(*string);
-	*string = NULL;
-	free(*string2);
-	*string2 = NULL;
-	free(*string3);
-	*string3 = NULL;
+	if (string != NULL)
+	{
+		free(*string);
+		*string = NULL;
+	}
+	if (string2 != NULL)
+	{
+		free(*string2);
+		*string2 = NULL;
+	}
+	if (string3 != NULL)
+	{
+		free(*string3);
+		*string3 = NULL;
+	}
 }
 
 int	nl_checker(const char *s)

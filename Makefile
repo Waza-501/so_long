@@ -6,7 +6,7 @@ MLX_FLAGS :=	-I include -lglfw3 -framework Cocoa -framework OpenGL -framework IO
 LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
-SOURCES	:=	map_check.c\
+SOURCES	:=	map_converter.c\
 			utils.c\
 			so_long.c\
 

@@ -6,7 +6,7 @@
 #    By: ohearn <ohearn@student.42.fr>                +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/11 20:08:26 by ohearn        #+#    #+#                  #
-#    Updated: 2023/03/21 13:32:07 by ohearn        ########   odam.nl          #
+#    Updated: 2023/03/22 14:15:08 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=		get_next_line.c\
 				ft_atoi.c\
 				ft_bzero.c\
 				ft_calloc.c\
+				ft_calloc2.c\
 				ft_isalnum.c\
 				ft_isalpha.c\
 				ft_isascii.c\

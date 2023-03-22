@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.42.fr>                +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/11 20:49:31 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/21 13:34:54 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/22 14:14:16 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			fc_putstr(char *str);
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t count, size_t size);
+void		*ft_calloc2(unsigned long count, unsigned long size);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);

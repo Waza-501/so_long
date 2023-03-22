@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/16 14:36:56 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/22 14:19:25 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 int	main(int argc, char **argv)
 {
 	t_data		data;
+	t_map		map;
 
 	errno = 0;
 	if (argc != 2)
 		error(ERR_INPUT);
 	else if (file_check(argv[1]))
 		error(ERR_FT);
-	open_map(argv[1], &data);
+	open_map(argv[1], &map);
 	return (0);
 }
 
