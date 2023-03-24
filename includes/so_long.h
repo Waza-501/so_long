@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/24 13:07:06 by Owen          ########   odam.nl         */
+/*   Updated: 2023/03/24 18:07:49 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct s_map
 
 typedef struct s_data
 {
+	int			tracking_P;
+	int			tracking_C;
+	int			tracking_W;
+	int			tracking_E;
 	mlx_t		*mlx;
 	t_map		*map;
 }					t_data;
@@ -38,6 +42,7 @@ typedef struct s_data
 /*map related functions*/
 int			file_check(char *file);
 void		open_map(char *path, t_map *map);
+void		check_map(t_map *map);
 
 /*utils*/
 void		error(char *err_msg);

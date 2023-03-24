@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/24 13:07:34 by Owen          ########   odam.nl         */
+/*   Updated: 2023/03/24 15:18:22 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 static int	compare_line(t_map *map, int size[2], int fd, int i)
 {
 	map->map[i] = get_next_line(fd);
-	write (1, "checkpoint 1\n", 13);
-	if (map->map == NULL)
+	if (map->map[i] == NULL)
 		return (i + 1);
 	size[i % 2] = ft_strlen(map->map[i]);
 	if (map->map[i][size[i % 2] - 1] == '\n')
@@ -27,8 +26,7 @@ static int	compare_line(t_map *map, int size[2], int fd, int i)
 	}
 	if (size[(i + 1) % 2] != size[i % 2] && i != 0)
 		error(ERR_MP_RECT);
-	map->y = i;
-	ft_printf("size is %i\n", size);
+	map->y = i + 1;
 	return (i + 1);
 }
 

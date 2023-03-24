@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 16:13:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/22 18:35:00 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/24 18:02:08 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	*ft_realloc(void *ptr, size_t size)
 	ft_memcpy(ret, ptr, size);
 	free (ptr);
 	return (ret);
+}
+
+void	tracker_reset(t_data *data)
+{
+	
 }
 
 int	file_check(char *file)

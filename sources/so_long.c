@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/22 14:19:25 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/24 18:08:32 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
+static void	tracker_reset(t_data *data)
+{
+	data->tracking_C = 0;
+	data->tracking_E = 0;
+	data->tracking_P = 0;
+	data->tracking_W = 0;
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -28,6 +37,8 @@ int	main(int argc, char **argv)
 	else if (file_check(argv[1]))
 		error(ERR_FT);
 	open_map(argv[1], &map);
+	tracker_reset(&data);
+	check_map(&map);
 	return (0);
 }
 
