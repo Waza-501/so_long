@@ -7,6 +7,8 @@ LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
 SOURCES	:=	map_converter.c\
+			map_solver.c\
+			map_validator.c\
 			utils.c\
 			so_long.c\
 

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/24 18:08:32 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/29 18:49:56 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@
 
 static void	tracker_reset(t_data *data)
 {
-	data->tracking_C = 0;
-	data->tracking_E = 0;
-	data->tracking_P = 0;
-	data->tracking_W = 0;
+	data->track_c = 0;
+	data->track_e = 0;
+	data->track_p = 0;
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -38,7 +36,8 @@ int	main(int argc, char **argv)
 		error(ERR_FT);
 	open_map(argv[1], &map);
 	tracker_reset(&data);
-	check_map(&map);
+	validate_map(&map, &data);
+	write(1, "Everything checks out so far\n", 29);
 	return (0);
 }
 

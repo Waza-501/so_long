@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/24 18:07:49 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/29 16:06:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,35 @@ typedef struct s_map
 	char	**map;
 	int		x;
 	int		y;
+	int		player[2];
+	int		exit[2];
+	int		collectibles;
 	int		collected;
 }					t_map;
 
+/*struct to store general data*/
 typedef struct s_data
 {
-	int			tracking_P;
-	int			tracking_C;
-	int			tracking_W;
-	int			tracking_E;
+	int			track_p;
+	int			track_c;
+	int			track_e;
+}					t_data;
+
+typedef struct s_game
+{
+	int			wi;
+	int			he;
 	mlx_t		*mlx;
 	t_map		*map;
-}					t_data;
+}					t_game;
 
 /*map related functions*/
 int			file_check(char *file);
 void		open_map(char *path, t_map *map);
-void		check_map(t_map *map);
+void		validate_map(t_map *map, t_data *data);
+int			valid_char(char c);
+void		count_char(t_map *map, t_data *data, int xi, int yi);
+void		check_solvable(t_map *map, t_data *data);
 
 /*utils*/
 void		error(char *err_msg);
