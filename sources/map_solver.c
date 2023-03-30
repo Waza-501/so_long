@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 15:44:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 13:46:17 by Owen          ########   odam.nl         */
+/*   Updated: 2023/03/30 18:06:46 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,6 @@ static void	copy_map(t_map *dst, t_map *src)
 	}
 }
 
-/*static void	x_marker(t_map *map, int change, t_data *tempdata)
-{
-
-	if (map->map[xi][yi] == 'C')
-	{
-		tempdata->track_c++;
-		map->map[xi][yi] = 'X';
-		change = 1;
-	}
-	if (map->map[xi][yi] == 'E')
-	{
-		tempdata->track_e++;
-		map->map[xi][yi] = 'X';
-		change = 1;
-	}
-}*/
-
 static void	solve_map(t_map *map, t_data *tempdata, int xi, int yi)
 {
 	if (map->map[xi][yi] == 'C')
@@ -71,25 +54,6 @@ static void	solve_map(t_map *map, t_data *tempdata, int xi, int yi)
 	if (map->map[xi][yi - 1] != 'X' && map->map[xi][yi - 1] != '1')
 		solve_map(map, tempdata, xi, yi - 1);
 }
-	/*int		change;
-
-	change = 1;
-	while (change != 0)
-	{
-		change = 0;
-		if (map->map[xi][yi] == 'C')
-		{
-			tempdata->track_c++;
-			map->map[xi][yi] = 'X';
-			change = 1;
-		}
-		if (map->map[xi][yi] == 'E')
-		{
-			tempdata->track_e++;
-			map->map[xi][yi] = 'X';
-			change = 1;
-		}
-	}*/
 
 void	check_solvable(t_map *map, t_data *data)
 {
@@ -105,7 +69,6 @@ void	check_solvable(t_map *map, t_data *data)
 	xxi = 0;
 	yi = 0;
 	copy_map(&tempmap, map);
-	write(1, "checkpoint 1\n", 13);
 	while (tempmap.map[xxi])
 	{
 		while (tempmap.map[xxi][yi])

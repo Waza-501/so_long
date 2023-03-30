@@ -1,12 +1,14 @@
-NAME :=			so_long
-CC := 			gcc
-CFLAGS :=		-Wall -Werror -Wextra -g
-MLX_FLAGS :=	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -framework Cocoa -framework OpenGL -framework IOKit
+NAME :=					so_long
+CC := 					gcc
+CFLAGS :=				-Wall -Werror -Wextra -g -fsanitize=address
+MLX_FLAGS :=			-I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+MLX_FLAGS_MACBOOK :=	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 
 LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
-SOURCES	:=	map_converter.c\
+SOURCES	:=	hooks.c\
+			map_converter.c\
 			map_solver.c\
 			map_validator.c\
 			utils.c\

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 13:43:15 by Owen          ########   odam.nl         */
+/*   Updated: 2023/03/30 17:00:24 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,15 @@
 # include <math.h>
 # include <fcntl.h>
 
-/*struct to store map related data*/
+/*struct to store player data*/
+typedef struct s_player
+{
+	int				*x;
+	int				*y;
+	mlx_image_t		*img;
+}					t_player;
+
+/*structs to store map related data*/
 typedef struct s_map
 {
 	char	**map;
@@ -29,8 +37,14 @@ typedef struct s_map
 	int		player[2];
 	int		exit[2];
 	int		collectibles;
-	int		collected;
 }					t_map;
+
+typedef struct	s_world
+{
+	mlx_t		*mlx;
+	mlx_image_t	*walls;
+	t_player	*player;
+}					t_world;
 
 /*struct to store general data*/
 typedef struct s_data
@@ -46,6 +60,7 @@ typedef struct s_game
 	int			he;
 	mlx_t		*mlx;
 	t_map		*map;
+	t_world		*world;
 }					t_game;
 
 /*map related functions*/
@@ -61,6 +76,8 @@ void		error(char *err_msg);
 void		*ft_realloc(void *ptr, size_t size);
 
 /*test functions*/
-int			test_mlx(t_game *game);
+int			test_mlx(t_map *map);
+void		ft_hook(void *param);
+void		testcase(t_map	*map);
 
 #endif

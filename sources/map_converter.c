@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 11:58:18 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 18:37:04 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static int	compare_line(t_map *map, int size[2], int fd, int i)
 {
 	map->map[i] = get_next_line(fd);
-	/*ft_printf ("Line grabbed: %s", map->map[i]);*/
 	if (map->map[i] == NULL)
 		return (i + 1);
 	size[i % 2] = ft_strlen(map->map[i]);
@@ -56,16 +55,16 @@ void	open_map(char *path, t_map *map)
 		i = compare_line(map, size, fd, i);
 	}
 	map->x = i - 1;
-	while (map->map[xi])
-	{
-		while (map->map[xi][yi])
-		{
-			ft_printf("%c", map->map[xi][yi]);
-			yi++;
-		}
-		write(1, "\n", 1);
-		yi = 0;
-		xi++;
-	}
+	// while (map->map[xi])
+	// {
+	// 	while (map->map[xi][yi])
+	// 	{
+	// 		ft_printf("%c", map->map[xi][yi]);
+	// 		yi++;
+	// 	}
+	// 	write(1, "\n", 1);
+	// 	yi = 0;
+	// 	xi++;
+	// }
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 15:21:50 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 12:00:14 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 17:21:14 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static void	check_map(t_map *map, t_data *data)
 	int		yi;
 
 	xi = 0;
-	yi = 0;
 	while (map->map[xi])
 	{
+		yi = 0;
 		while (map->map[xi][yi])
 		{
 			if (xi == 0 || yi == 0 || xi == map->x - 1 || yi == map->y - 1)
@@ -85,7 +85,6 @@ static void	check_map(t_map *map, t_data *data)
 			}
 			yi++;
 		}
-		yi = 0;
 		xi++;
 	}
 }
