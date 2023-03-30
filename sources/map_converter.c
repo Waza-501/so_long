@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/24 15:18:22 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 11:58:18 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int	compare_line(t_map *map, int size[2], int fd, int i)
 {
 	map->map[i] = get_next_line(fd);
+	/*ft_printf ("Line grabbed: %s", map->map[i]);*/
 	if (map->map[i] == NULL)
 		return (i + 1);
 	size[i % 2] = ft_strlen(map->map[i]);
@@ -26,7 +27,7 @@ static int	compare_line(t_map *map, int size[2], int fd, int i)
 	}
 	if (size[(i + 1) % 2] != size[i % 2] && i != 0)
 		error(ERR_MP_RECT);
-	map->y = i + 1;
+	map->y = size [i % 2];
 	return (i + 1);
 }
 
@@ -37,7 +38,11 @@ void	open_map(char *path, t_map *map)
 	int		fd;
 	int		i;
 	int		size[2];
+	int		xi;
+	int		yi;
 
+	xi = 0;
+	yi = 0;
 	i = 0;
 	size[1] = 0;
 	fd = open(path, O_RDONLY);
@@ -51,6 +56,16 @@ void	open_map(char *path, t_map *map)
 		i = compare_line(map, size, fd, i);
 	}
 	map->x = i - 1;
-	ft_printf("map x: %i\n", map->x);
+	while (map->map[xi])
+	{
+		while (map->map[xi][yi])
+		{
+			ft_printf("%c", map->map[xi][yi]);
+			yi++;
+		}
+		write(1, "\n", 1);
+		yi = 0;
+		xi++;
+	}
 	close(fd);
 }

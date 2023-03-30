@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 15:44:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/29 19:03:31 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 12:19:59 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ static void	solve_map(t_map *map, t_data *tempdata, int xi, int yi)
 	if (map->map[xi][yi] == 'E')
 		tempdata->track_e++;
 	map->map[xi][yi] = 'X';
-	if (map->map[xi + 1][yi] != 'X' || map->map[xi + 1][yi] != '1')
+	if (map->map[xi + 1][yi] != 'X' && map->map[xi + 1][yi] != '1')
 		solve_map(map, tempdata, xi + 1, yi);
-	if (map->map[xi - 1][yi] != 'X' || map->map[xi - 1][yi] != '1')
+	if (map->map[xi - 1][yi] != 'X' && map->map[xi - 1][yi] != '1')
 		solve_map(map, tempdata, xi - 1, yi);
-	if (map->map[xi][yi + 1] != 'X' || map->map[xi][yi + 1] != '1')
+	if (map->map[xi][yi + 1] != 'X' && map->map[xi][yi + 1] != '1')
 		solve_map(map, tempdata, xi, yi + 1);
-	if (map->map[xi][yi - 1] != 'X' || map->map[xi][yi - 1] != '1')
+	if (map->map[xi][yi - 1] != 'X' && map->map[xi][yi - 1] != '1')
 		solve_map(map, tempdata, xi, yi - 1);
 }
 	/*int		change;
@@ -96,13 +96,37 @@ void	check_solvable(t_map *map, t_data *data)
 	t_map	tempmap;
 	t_data	tempdata;
 	int		xi;
+	int		xxi;
+	int		yi;
 
 	tempdata.track_e = 0;
 	tempdata.track_c = 0;
 	xi = 0;
+	xxi = 0;
+	yi = 0;
 	copy_map(&tempmap, map);
-	solve_map(&tempmap, tempmap.player[0], tempmap.player[1], &tempdata);
+	write(1, "checkpoint 1\n", 13);
+	while (tempmap.map[xxi])
+	{
+		while (tempmap.map[xxi][yi])
+		{
+			ft_printf("%c", tempmap.map[xxi][yi]);
+			yi++;
+		}
+		write(1, "\n", 1);
+		yi = 0;
+		xxi++;
+	}
+	solve_map(&tempmap, &tempdata, tempmap.player[0], tempmap.player[1]);
+	write(1, "checkpoint 2\n", 13);
 	if (tempdata.track_c != data->track_c || tempdata.track_e != data->track_e)
 		error(ERR_MP_UNSOLV);
-	
+	write(1, "checkpoint 3\n", 13);
+	while (tempmap.map[xi])
+	{
+		free (tempmap.map[xi]);
+		xi++;
+	}
+	free (tempmap.map[xi]);
+	free (tempmap.map);
 }

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 16:13:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/29 14:56:39 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 11:38:01 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*ft_realloc(void *ptr, size_t size)
 
 	ret = ft_calloc2(1, size);
 	if (ret == NULL)
-		error(ERR_MEM);
+		exit(EXIT_FAILURE);
 	ft_memcpy(ret, ptr, size);
 	free (ptr);
 	return (ret);

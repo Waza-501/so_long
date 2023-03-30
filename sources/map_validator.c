@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 15:21:50 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/29 16:00:01 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 12:00:14 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,13 @@ static void	check_map(t_map *map, t_data *data)
 			if (valid_char(map->map[xi][yi]) != 0)
 				error(ERR_MP_CHAR);
 			if (map->map[xi][yi] == 'P' || map->map[xi][yi] == 'C' ||
-				map->map == "E" )
+				map->map[xi][yi] == 'E' )
 			{
-				count_char(map->map[xi][yi], xi, yi);
+				count_char(map, data, xi, yi);
 			}
 			yi++;
 		}
+		yi = 0;
 		xi++;
 	}
 }
@@ -96,7 +97,7 @@ static void	requirements_met(t_data *data)
 	if (data->track_p > 1)
 		error(ERR_MP_SPWN);
 	if (data->track_c < 1)
-		error(ERR_MP_COL);
+		error(ERR_MP_NOCOL);
 	if (data->track_e == 0)
 		error(ERR_MP_NOEXIT);
 	if (data->track_e < 1)
