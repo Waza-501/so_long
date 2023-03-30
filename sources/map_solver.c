@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 15:44:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 12:19:59 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 13:46:17 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,8 @@ void	check_solvable(t_map *map, t_data *data)
 		xxi++;
 	}
 	solve_map(&tempmap, &tempdata, tempmap.player[0], tempmap.player[1]);
-	write(1, "checkpoint 2\n", 13);
 	if (tempdata.track_c != data->track_c || tempdata.track_e != data->track_e)
 		error(ERR_MP_UNSOLV);
-	write(1, "checkpoint 3\n", 13);
 	while (tempmap.map[xi])
 	{
 		free (tempmap.map[xi]);

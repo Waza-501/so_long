@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/29 18:49:56 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 13:41:48 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 {
 	t_data		data;
 	t_map		map;
+	t_game		game;
+	int			temp;
 
 	errno = 0;
 	if (argc != 2)
@@ -38,6 +40,7 @@ int	main(int argc, char **argv)
 	tracker_reset(&data);
 	validate_map(&map, &data);
 	write(1, "Everything checks out so far\n", 29);
+	temp = test_mlx(&game);
 	return (0);
 }
 

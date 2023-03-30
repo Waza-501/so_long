@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/29 16:06:35 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/03/30 13:43:15 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ void		check_solvable(t_map *map, t_data *data);
 /*utils*/
 void		error(char *err_msg);
 void		*ft_realloc(void *ptr, size_t size);
+
+/*test functions*/
+int			test_mlx(t_game *game);
 
 #endif
