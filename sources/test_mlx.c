@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 13:16:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/03/30 19:07:49 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/02 10:41:41 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ static void	create_world(t_world *world, t_map *map)
 		while (map->map[xi][yi])
 		{
 			if (map->map[xi][yi] == '1')
-				mlx_draw_texture(world->walls, wall, xi * 20, yi * 20);
+				mlx_draw_texture(world->walls, wall, yi * 20, xi * 20);
 			yi++;
+			ft_printf("%i\n", xi);
 		}
 		xi++;
 	}
@@ -73,7 +74,7 @@ void	testcase(t_map	*map)
 	create_world(&world, map);
 	mlx_image_to_window(world.mlx, world.walls, 0, 0);
 	place_player(&world, &player);
-	mlx_image_to_window(world.mlx, player.img, map->player[0] * 20, map->player[1] * 20);
+	mlx_image_to_window(world.mlx, player.img, map->player[1] * 20, map->player[0] * 20);
 	mlx_loop_hook(world.mlx, ft_hook, world.mlx);
 	mlx_loop(world.mlx);
 	mlx_terminate(world.mlx);
