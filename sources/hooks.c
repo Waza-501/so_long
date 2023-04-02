@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:20:02 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 16:29:12 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/02 16:16:36 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,17 @@
 void	ft_hook(void *param)
 {
 	mlx_t		*mlx;
-	mlx_image_t	*img;
 
 	mlx = param;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+}
+
+void	ft_input_hook(void *input)
+{
+	t_world	*newgame;
+
+	newgame = input;
+	if (mlx_is_key_down(newgame->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(newgame->mlx);
 }

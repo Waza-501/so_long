@@ -11,6 +11,7 @@ SOURCES	:=	hooks.c\
 			map_converter.c\
 			map_solver.c\
 			map_validator.c\
+			mapgen.c\
 			utils.c\
 			test_mlx.c\
 			so_long.c\
@@ -26,7 +27,7 @@ OBJECTS :=		$(addprefix $(OBJECT_DIR)/, $(SOURCES:.c=.o))
 all:	libraries $(NAME)
 
 $(NAME):		$(OBJECTS) 
-					$(CC) $(FLAGS) $(MLX_FLAGS_MACBOOK) $(LIBRARIES) -o $@ $^ $(HEADERS)
+					$(CC) $(FLAGS) $(MLX_FLAGS) $(LIBRARIES) -o $@ $^ $(HEADERS)
 
 
 $(OBJECT_DIR)/%.o:	$(SOURCE_DIR)/%.c

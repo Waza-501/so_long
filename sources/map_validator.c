@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 15:21:50 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 17:21:14 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/02 14:02:29 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ static void	requirements_met(t_data *data)
 void	validate_map(t_map *map, t_data *data)
 {
 	check_map(map, data);
+	if (map->x == map->y)
+		error(ERR_MP_RECT);
 	requirements_met (data);
 	check_solvable(map, data);
 }

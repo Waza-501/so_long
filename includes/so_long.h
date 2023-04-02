@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 17:00:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/02 16:06:17 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_game
 }					t_game;
 
 /*map related functions*/
+t_map		init_map(void);
 int			file_check(char *file);
 void		open_map(char *path, t_map *map);
 void		validate_map(t_map *map, t_data *data);
@@ -76,6 +77,7 @@ void		error(char *err_msg);
 void		*ft_realloc(void *ptr, size_t size);
 
 /*test functions*/
+void		ft_input_hook(void *input);
 int			test_mlx(t_map *map);
 void		ft_hook(void *param);
 void		testcase(t_map	*map);
