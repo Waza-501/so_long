@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 13:16:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/04/02 16:20:14 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/05 10:37:49 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	testcase(t_map	*map)
 	place_player(&world, &player);
 	mlx_image_to_window(world.mlx, player.img,
 		map->player[1] * 20, map->player[0] * 20);
-	mlx_loop_hook(world.mlx, &ft_input_hook, &map);
+	mlx_loop_hook(world.mlx, ft_hook, world.mlx);
 	mlx_loop(world.mlx);
 	mlx_terminate(world.mlx);
 }
