@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/02 15:50:11 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/06 17:52:04 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,9 @@ static void	tracker_reset(t_data *data)
 	data->track_p = 0;
 }
 
-// static t_game	init_game(void)
-// {
-// 	t_game	newgame;
-
-// 	newgame.wi = 0;
-// 	newgame.he = 0;
-// 	newgame.map = init_map();
-// 	newgame
-// }
-
 int	main(int argc, char **argv)
 {
 	t_data		data;
-	t_map		map;
 	t_game		game;
 	int			xi;
 	int			yi;
@@ -49,11 +38,10 @@ int	main(int argc, char **argv)
 		error(ERR_INPUT);
 	else if (file_check(argv[1]))
 		error(ERR_FT);
-	map = init_map();
-	open_map(argv[1], &map);
+	game = init_game();
+	open_map(argv[1], &game.map);
 	tracker_reset(&data);
-	validate_map(&map, &data);
-	write(1, "Everything checks out so far\n", 29);
-	testcase(&map);
+	validate_map(&game.map, &data);
+	testcase(game);
 	return (0);
 }

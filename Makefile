@@ -8,6 +8,7 @@ LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
 SOURCES	:=	hooks.c\
+			init_structs.c\
 			map_converter.c\
 			map_solver.c\
 			map_validator.c\

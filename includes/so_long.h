@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/02 16:06:17 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/06 17:46:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct	s_world
 {
 	mlx_t		*mlx;
 	mlx_image_t	*walls;
-	t_player	*player;
 }					t_world;
 
 /*struct to store general data*/
@@ -59,27 +58,34 @@ typedef struct s_game
 	int			wi;
 	int			he;
 	mlx_t		*mlx;
-	t_map		*map;
-	t_world		*world;
+	t_map		map;
+	t_world		world;
+	t_player	player;
 }					t_game;
 
+/*initiate structs*/
+
+t_game			init_game(void);
+t_map			init_map(void);
+t_world			init_world(void);
+t_player		init_player(void);
+
 /*map related functions*/
-t_map		init_map(void);
-int			file_check(char *file);
-void		open_map(char *path, t_map *map);
-void		validate_map(t_map *map, t_data *data);
-int			valid_char(char c);
-void		count_char(t_map *map, t_data *data, int xi, int yi);
-void		check_solvable(t_map *map, t_data *data);
+int				file_check(char *file);
+void			open_map(char *path, t_map *map);
+void			validate_map(t_map *map, t_data *data);
+int				valid_char(char c);
+void			count_char(t_map *map, t_data *data, int xi, int yi);
+void			check_solvable(t_map *map, t_data *data);
 
 /*utils*/
-void		error(char *err_msg);
-void		*ft_realloc(void *ptr, size_t size);
+void			error(char *err_msg);
+void			*ft_realloc(void *ptr, size_t size);
 
 /*test functions*/
-void		ft_input_hook(void *input);
-int			test_mlx(t_map *map);
-void		ft_hook(void *param);
-void		testcase(t_map	*map);
+void			ft_input_hook(void *input);
+int				test_mlx(t_map *map);
+void			ft_hook(void *param);
+void			testcase(t_game game);
 
 #endif

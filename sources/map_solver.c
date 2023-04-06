@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 15:44:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 18:06:46 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/06 18:03:45 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,26 +60,11 @@ void	check_solvable(t_map *map, t_data *data)
 	t_map	tempmap;
 	t_data	tempdata;
 	int		xi;
-	int		xxi;
-	int		yi;
 
 	tempdata.track_e = 0;
 	tempdata.track_c = 0;
 	xi = 0;
-	xxi = 0;
-	yi = 0;
 	copy_map(&tempmap, map);
-	while (tempmap.map[xxi])
-	{
-		while (tempmap.map[xxi][yi])
-		{
-			ft_printf("%c", tempmap.map[xxi][yi]);
-			yi++;
-		}
-		write(1, "\n", 1);
-		yi = 0;
-		xxi++;
-	}
 	solve_map(&tempmap, &tempdata, tempmap.player[0], tempmap.player[1]);
 	if (tempdata.track_c != data->track_c || tempdata.track_e != data->track_e)
 		error(ERR_MP_UNSOLV);

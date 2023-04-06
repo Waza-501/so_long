@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 13:16:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/04/05 10:37:49 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/06 18:01:44 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 #include <unistd.h>
 #include <memory.h>
 
-static void	place_player(t_world *world, t_player *player)
+static void	place_player(t_game *game)
 {
 	mlx_texture_t	*character;
 
 	character = mlx_load_png("./textures/Barrel.png");
-	player->img = mlx_texture_to_image(world->mlx, character);
-	player->x = &player->img->instances->x;
-	player->y = &player->img->instances->y;
+	printf("Hello there\n");
+	game->player.img = mlx_texture_to_image(game->mlx, character);
+	// game->player.x = &game->player.img->instances->x;
+	// game->player.y = &game->player.img->instances->y;
 }
 
-static void	create_world(t_world *world, t_map *map)
+static void	create_world(t_game *game)
 {
 	int				xi;
 	int				yi;
@@ -36,38 +37,38 @@ static void	create_world(t_world *world, t_map *map)
 
 	xi = 0;
 	wall = mlx_load_png("./textures/Tile.png");
-	world->walls = mlx_new_image(world->mlx, map->y * 20, map->x * 20);
-	while (map->map[xi])
+	printf("test\n");
+	game->world.walls = mlx_new_image(game->mlx, game->map.y * 20, game->map.x * 20);
+	while (game->map.map[xi])
 	{
 		yi = 0;
-		while (map->map[xi][yi])
+		while (game->map.map[xi][yi])
 		{
-			if (map->map[xi][yi] == '1')
-				mlx_draw_texture(world->walls, wall, yi * 20, xi * 20);
+			if (game->map.map[xi][yi] == '1')
+				mlx_draw_texture(game->world.walls, wall, yi * 20, xi * 20);
 			ft_printf("%i xi, %i yi\n", xi, yi);
-			ft_printf("%c number\n", map->map[xi][yi]);
+			ft_printf("%c number\n", game->map.map[xi][yi]);
 			yi++;
 		}
 		xi++;
 	}
 }
 
-void	testcase(t_map	*map)
+void	testcase(t_game	game)
 {
-	t_world		world;
-	t_player	player;
 	int			xi;
 	int			yi;
 
-	world.mlx = mlx_init(map->y * 20, map->x * 20, "so_long", true);
-	if (!world.mlx)
+	game.mlx = mlx_init(game.map.y * 20, game.map.x * 20, "so_long", true);
+	if (!game.mlx)
 		error(ERR_MLX);
-	create_world(&world, map);
-	mlx_image_to_window(world.mlx, world.walls, 0, 0);
-	place_player(&world, &player);
-	mlx_image_to_window(world.mlx, player.img,
-		map->player[1] * 20, map->player[0] * 20);
-	mlx_loop_hook(world.mlx, ft_hook, world.mlx);
-	mlx_loop(world.mlx);
-	mlx_terminate(world.mlx);
+	create_world(&game);
+	mlx_image_to_window(game.mlx, game.world.walls, 0, 0);
+	place_player(&game);
+	mlx_image_to_window(game.mlx, game.player.img,
+		game.map.player[1] * 20, game.map.player[0] * 20);
+	printf("Hello there\n");
+	mlx_loop_hook(game.mlx, ft_input_hook, &game);
+	mlx_loop(game.mlx);
+	mlx_terminate(game.mlx);
 }
