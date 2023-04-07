@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:19:47 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/06 18:02:53 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 16:13:07 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_game	init_game(void)
 	newgame.wi = 0;
 	newgame.he = 0;
 	newgame.mlx = NULL;
+	newgame.collected = 0;
 	newgame.map = init_map();
 	newgame.world = init_world();
 	newgame.player = init_player();

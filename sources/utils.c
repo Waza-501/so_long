@@ -6,13 +6,20 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 16:13:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 11:38:01 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 15:16:55 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "error_messages.h"
 #include <errno.h>
+
+void	copy_player_data(t_game game)
+{
+	game.player.x = game.map.player[0];
+	game.player.y = game.map.player[1];
+	printf("player x:%i\nplayer y:%i\nmap player x:%i\nmap player y:%i\n", game.player.x, game.player.y, game.map.player[0], game.map.player[1]);
+}
 
 void	error(char *err_msg)
 {

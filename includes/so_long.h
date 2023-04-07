@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/06 17:46:51 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 17:30:20 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 /*struct to store player data*/
 typedef struct s_player
 {
-	int				*x;
-	int				*y;
+	int				x;
+	int				y;
 	mlx_image_t		*img;
 }					t_player;
 
@@ -43,6 +43,7 @@ typedef struct	s_world
 {
 	mlx_t		*mlx;
 	mlx_image_t	*walls;
+	mlx_image_t	*barrels;
 }					t_world;
 
 /*struct to store general data*/
@@ -57,6 +58,7 @@ typedef struct s_game
 {
 	int			wi;
 	int			he;
+	int			collected;
 	mlx_t		*mlx;
 	t_map		map;
 	t_world		world;
@@ -84,8 +86,7 @@ void			*ft_realloc(void *ptr, size_t size);
 
 /*test functions*/
 void			ft_input_hook(void *input);
-int				test_mlx(t_map *map);
-void			ft_hook(void *param);
-void			testcase(t_game game);
+void			build_game(t_game game);
+void			copy_player_data(t_game game);
 
 #endif

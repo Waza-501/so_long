@@ -7,14 +7,14 @@ MLX_FLAGS_MACBOOK :=	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -
 LIBRARIES :=	./libraries/libft/libft.a\
 				./MLX42/build/libmlx42.a\
 
-SOURCES	:=	hooks.c\
+SOURCES	:=	collision.c\
+			hooks.c\
 			init_structs.c\
 			map_converter.c\
 			map_solver.c\
 			map_validator.c\
 			mapgen.c\
 			utils.c\
-			test_mlx.c\
 			so_long.c\
 
 INCLUDE_DIR :=	./includes
@@ -28,7 +28,7 @@ OBJECTS :=		$(addprefix $(OBJECT_DIR)/, $(SOURCES:.c=.o))
 all:	libraries $(NAME)
 
 $(NAME):		$(OBJECTS) 
-					$(CC) $(FLAGS) $(MLX_FLAGS) $(LIBRARIES) -o $@ $^ $(HEADERS)
+					$(CC) $(FLAGS) $(MLX_FLAGS_MACBOOK) $(LIBRARIES) -o $@ $^ $(HEADERS)
 
 
 $(OBJECT_DIR)/%.o:	$(SOURCE_DIR)/%.c
