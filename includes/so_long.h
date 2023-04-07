@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 17:30:20 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/07 18:22:56 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ typedef struct s_map
 typedef struct	s_world
 {
 	mlx_t		*mlx;
-	mlx_image_t	*walls;
-	mlx_image_t	*barrels;
+	mlx_image_t	*wrld;
 }					t_world;
 
 /*struct to store general data*/

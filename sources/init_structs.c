@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:19:47 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 16:13:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/07 18:23:24 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_world	init_world(void)
 	t_world		wrld;
 
 	wrld.mlx = NULL;
-	wrld.walls = NULL;
+	wrld.wrld = NULL;
 	return (wrld);
 }
 

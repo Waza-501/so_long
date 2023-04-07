@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:28:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 17:43:48 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/07 18:57:57 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	place_player(t_game *game)
 {
 	mlx_texture_t	*character;
 
-	character = mlx_load_png("./textures/Tile.png");
+	character = mlx_load_png("./textures/Barrel.png");
 	game->player.img = mlx_texture_to_image(game->mlx, character);
 }
 
@@ -30,8 +30,9 @@ static void	place_player(t_game *game)
 // {
 // 	int				xi;
 // 	int				yi;
-// 	mlx_texture_t	*barrel;
+// 	mlx_texture_t	*collect;
 
+	
 // 	xi = 0;
 // 	while (game->map.map[xi])
 // 	{
@@ -40,7 +41,7 @@ static void	place_player(t_game *game)
 // 		{
 // 			if (game->map.map[xi][yi] == 'C')
 // 			{
-// 				mlx_image_to_window(game->mlx, game->world.barrel, game->map.map[xi][yi], game->map.map[xi]);
+// 				mlx_image_to_window(game->mlx, game->world.collect, game->map.map[xi][yi], game->map.map[xi]);
 // 				printf("test\n");
 // 			}
 // 			yi++;
@@ -58,21 +59,17 @@ static void	create_world(t_game *game)
 
 	xi = 0;
 	wall = mlx_load_png("./textures/brick.png");
-	barrel = mlx_load_png("./textures/Barrel.png");
-	game->world.walls = mlx_new_image(game->mlx, game->map.y * 20, game->map.x * 20);
-	game->world.barrels = mlx_new_image(game->mlx, game->map.y * 20, game->map.x * 20);
+	barrel = mlx_load_png("./textures/Hedge.png");
+	game->world.wrld = mlx_new_image(game->mlx, game->map.y * 20, game->map.x * 20);
 	while (game->map.map[xi])
 	{
 		yi = 0;
 		while (game->map.map[xi][yi])
 		{
 			if (game->map.map[xi][yi] == '1')
-				mlx_draw_texture(game->world.walls, wall, yi * 20, xi * 20);
-			if (game->map.map[xi][yi] == '0')
-			{
-				mlx_draw_texture(game->world.barrels, barrel, yi * 20, xi * 20);
-				printf("check\n");
-			}
+				mlx_draw_texture(game->world.wrld, wall, yi * 20, xi * 20);
+			if (game->map.map[xi][yi] != '1')
+				mlx_draw_texture(game->world.wrld, barrel, yi * 20, xi * 20);
 			yi++;
 		}
 		xi++;
@@ -88,7 +85,7 @@ void	build_game(t_game	game)
 	if (!game.mlx)
 		error(ERR_MLX);
 	create_world(&game);
-	mlx_image_to_window(game.mlx, game.world.walls, 0, 0);
+	mlx_image_to_window(game.mlx, game.world.wrld, 0, 0);
 	place_player(&game);
 	mlx_image_to_window(game.mlx, game.player.img,
 		game.map.player[1] * 20, game.map.player[0] * 20);
