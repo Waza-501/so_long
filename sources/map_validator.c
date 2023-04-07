@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 15:21:50 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/02 14:02:29 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 19:53:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,12 @@ void	validate_map(t_map *map, t_data *data)
 	check_solvable(map, data);
 }
 
-/*To make sure map is solvable, make a copy of the map and go through it one by one, replacing any tile the P touches with an X.
+/*To make sure map is solvable,
+make a copy of the map and go through it one by one,
+replacing any tile the P touches with an X.
 Next loop, and every loop after it, replace any 0, C or E tiles with X.
 Create an int to keep track if tiles are changed.
-When the int does't get incremented and the correct number of collectibles and the exit haven't been touched, the map isn't solveable.
+When the int does't get incremented and the correct number of collectibles and
+the exit haven't been touched, the map isn't solveable.
 
 Thank you Nick for giving me the idea on how to go about it*/

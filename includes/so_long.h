@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 18:22:56 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/07 20:11:12 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void			validate_map(t_map *map, t_data *data);
 int				valid_char(char c);
 void			count_char(t_map *map, t_data *data, int xi, int yi);
 void			check_solvable(t_map *map, t_data *data);
+
+/*collision*/
+void			detect_collision(t_game game, int x, int y);
 
 /*utils*/
 void			error(char *err_msg);

@@ -3,62 +3,84 @@
 /*                                                        ::::::::            */
 /*   collision.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
+/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/07 14:44:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/04/07 17:07:44 by Owen          ########   odam.nl         */
+/*   Created: 2023/04/07 19:44:28 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/04/07 20:12:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "error_messages.h"
 
-static int  detect_north(t_game game)
+static int	detect_north(t_game game, int x, int y)
 {
-    int     i;
-    int     j;
-
-    i = game.player.x + 1;
-    j = game.player.y;
-    if ((game.map.map[i][j]) == '1')
-    {
-        
-        return (1);
-    }
-    if ((game.map.map[i][j]) == 'C')
-    {
-        game.collected++;
-
-    }
-    if ((game.map.map[i][j]) == 'E' && game.collected == game.map.collectibles)
-    {
-        mlx_close_window(game.mlx);
-        mlx_terminate(game.mlx);
-    }
-    return (0);
+	if ((game.map.map[x][y]) == 'C')
+	{
+		game.collected++;
+		game.map.map[x][y] = '0';
+	}
+	if ((game.map.map[x][y]) == 'E' && game.collected == game.map.collectibles)
+	{
+		mlx_close_window(game.mlx);
+		mlx_terminate(game.mlx);
+	}
+	return (0);
 }
 
-static int  detect_east(t_game game)
+static int	detect_east(t_game game, int x, int y)
 {
-
+	if ((game.map.map[x][y]) == 'C')
+	{
+		game.collected++;
+		game.map.map[x][y] = '0';
+	}
+	if ((game.map.map[x][y]) == 'E' && game.collected == game.map.collectibles)
+	{
+		mlx_close_window(game.mlx);
+		mlx_terminate(game.mlx);
+	}
+	return (0);
 }
 
-static int  detect_south(t_game game)
+static int	detect_south(t_game game, int x, int y)
 {
-
+	if ((game.map.map[x][y]) == '1')
+		return (1);
+	if ((game.map.map[x][y]) == 'C')
+	{
+		game.collected++;
+		game.map.map[x][y] = '0';
+	}
+	if ((game.map.map[x][y]) == 'E' && game.collected == game.map.collectibles)
+	{
+		mlx_close_window(game.mlx);
+		mlx_terminate(game.mlx);
+	}
+	return (0);
 }
 
-static int  detect_west(t_game game)
+static int	detect_west(t_game game, int x, int y)
 {
-
+	if ((game.map.map[x][y]) == '1')
+		return (1);
+	if ((game.map.map[x][y]) == 'C')
+	{
+		game.collected++;
+		game.map.map[x][y] = '0';
+	}
+	if ((game.map.map[x][y]) == 'E' && game.collected == game.map.collectibles)
+	{
+		mlx_close_window(game.mlx);
+		mlx_terminate(game.mlx);
+	}
+	return (0);
 }
 
-int    detect_collision(t_game game)
+void	detect_collision(t_game game, int x, int y)
 {
-    if (detect_north(game) == 1)
-    {
-        
-    }
-
-    return (0);
+	if (detect_north(game, x, y) == 1 || detect_east(game, x, y) == 1
+		|| detect_south(game, x, y) == 1 || detect_west(game, x, y) == 1)
+		return ;
+	return ;
 }
