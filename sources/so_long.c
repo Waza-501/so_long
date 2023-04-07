@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 15:18:24 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/07 20:57:04 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int argc, char **argv)
 	open_map(argv[1], &game.map);
 	tracker_reset(&data);
 	validate_map(&game.map, &data);
-	copy_player_data(game);
+	copy_player_data(&game);
+	printf("map player x:%i\nmap player y:%i\n", game.player.x, game.player.y);
 	build_game(game);
 	return (0);
 }

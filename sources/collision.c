@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 19:44:28 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 20:12:51 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 22:55:29 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static int	detect_east(t_game game, int x, int y)
 
 static int	detect_south(t_game game, int x, int y)
 {
-	if ((game.map.map[x][y]) == '1')
-		return (1);
 	if ((game.map.map[x][y]) == 'C')
 	{
 		game.collected++;
@@ -62,8 +60,6 @@ static int	detect_south(t_game game, int x, int y)
 
 static int	detect_west(t_game game, int x, int y)
 {
-	if ((game.map.map[x][y]) == '1')
-		return (1);
 	if ((game.map.map[x][y]) == 'C')
 	{
 		game.collected++;

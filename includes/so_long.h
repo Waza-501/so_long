@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 20:11:12 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/07 23:16:26 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_game
 	int			wi;
 	int			he;
 	int			collected;
+	int			mvmnt;
+	int			counter;
 	mlx_t		*mlx;
 	t_map		map;
 	t_world		world;
@@ -87,8 +89,8 @@ void			error(char *err_msg);
 void			*ft_realloc(void *ptr, size_t size);
 
 /*test functions*/
-void			ft_input_hook(void *input);
+void			ft_keyhook(mlx_key_data_t keydata, void *input);
 void			build_game(t_game game);
-void			copy_player_data(t_game game);
+void			copy_player_data(t_game *game);
 
 #endif
