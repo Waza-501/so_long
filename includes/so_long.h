@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/07 23:16:26 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/09 18:20:44 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_game
 	int			collected;
 	int			mvmnt;
 	int			counter;
+	int			allow_leave;
 	mlx_t		*mlx;
 	t_map		map;
 	t_world		world;
@@ -82,7 +83,7 @@ void			count_char(t_map *map, t_data *data, int xi, int yi);
 void			check_solvable(t_map *map, t_data *data);
 
 /*collision*/
-void			detect_collision(t_game game, int x, int y);
+void			detect_collision(t_game *game, int x, int y);
 
 /*utils*/
 void			error(char *err_msg);
