@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/02 13:29:31 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/10 21:06:25 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ void	open_map(char *path, t_map *map)
 	int		fd;
 	int		i;
 	int		size;
-	int		xi;
-	int		yi;
 
-	xi = 0;
-	yi = 0;
 	i = 0;
 	size = 0;
 	fd = open(path, O_RDONLY);

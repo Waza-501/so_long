@@ -28,12 +28,12 @@ OBJECTS :=		$(addprefix $(OBJECT_DIR)/, $(SOURCES:.c=.o))
 all:	libraries $(NAME)
 
 $(NAME):		$(OBJECTS) 
-					$(CC) $(FLAGS) $(MLX_FLAGS_MACBOOK) $(LIBRARIES) -o $@ $^ $(HEADERS)
+					$(CC) $(CFLAGS) $(MLX_FLAGS_MACBOOK) $(LIBRARIES) -o $@ $^ $(HEADERS)
 
 
 $(OBJECT_DIR)/%.o:	$(SOURCE_DIR)/%.c
 						mkdir -p $(dir $@)
-						$(CC) $(FLAGS) $(HEADERS) -c -o $@ $< -O3
+						$(CC) $(CFLAGS) $(HEADERS) -c -o $@ $< -O3
 
 clean:
 		rm -f $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:28:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/09 18:23:57 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/10 21:06:39 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,34 @@ static void	place_player(t_game *game)
 {
 	mlx_texture_t	*character;
 
-	character = mlx_load_png("./textures/Barrel.png");
+	character = mlx_load_png("./textures/Char.png");
 	game->player.img = mlx_texture_to_image(game->mlx, character);
 }
 
-// static void	create_collect(t_game *game)
-// {
-// 	int				xi;
-// 	int				yi;
-// 	mlx_texture_t	*collect;
-// 	xi = 0;
-// 	while (game->map.map[xi])
-// 	{
-// 		yi = 0;
-// 		while (game->map.map[xi][yi])
-// 		{
-// 			if (game->map.map[xi][yi] == 'C')
-// 			{
-// 				mlx_image_to_window(game->mlx, game->world.collect,
-//					game->map.map[xi][yi], game->map.map[xi]);
-// 				printf("test\n");
-// 			}
-// 			yi++;
-// 		}
-// 		xi++;
-// 	}
-// }
+static void	create_special(t_game *game)
+{
+	int				xi;
+	int				yi;
+	mlx_texture_t	*collect;
+	mlx_texture_t	*exit;
+
+	xi = 0;
+	collect = mlx_load_png("./textures/Collect.png");
+	exit = mlx_load_png("./textures/Exit.png");
+	while (game->map.map[xi])
+	{
+		yi = 0;
+		while (game->map.map[xi][yi])
+		{
+			if (game->map.map[xi][yi] == 'C')
+				mlx_draw_texture(game->world.wrld, collect, yi * 30, xi * 30);
+			if (game->map.map[xi][yi] == 'E')
+				mlx_draw_texture(game->world.wrld, exit, yi * 30, xi * 30);
+			yi++;
+		}
+		xi++;
+	}
+}
 
 static void	create_world(t_game *game)
 {
@@ -55,12 +57,10 @@ static void	create_world(t_game *game)
 	int				yi;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*grass;
-	mlx_texture_t	*exit;
 
 	xi = 0;
-	wall = mlx_load_png("./textures/Tile.png");
-	grass = mlx_load_png("./textures/Grass.png");
-	exit = mlx_load_png("./textures/Hedge.png");
+	wall = mlx_load_png("./textures/Water.png");
+	grass = mlx_load_png("./textures/GrassPattern.png");
 	game->world.wrld = mlx_new_image(game->mlx, game->map.y * 30,
 		game->map.x * 30);
 	while (game->map.map[xi])
@@ -70,21 +70,17 @@ static void	create_world(t_game *game)
 		{
 			if (game->map.map[xi][yi] == '1')
 				mlx_draw_texture(game->world.wrld, wall, yi * 30, xi * 30);
-			if (game->map.map[xi][yi] == '0')
+			if (game->map.map[xi][yi] == '0' || game->map.map[xi][yi] == 'P')
 				mlx_draw_texture(game->world.wrld, grass, yi * 30, xi * 30);
-			if (game->map.map[xi][yi] == 'E')
-				mlx_draw_texture(game->world.wrld, exit, yi * 30, xi * 30);
 			yi++;
 		}
 		xi++;
 	}
+	create_special(game);
 }
 
 void	build_game(t_game	game)
 {
-	int			xi;
-	int			yi;
-
 	game.mlx = mlx_init(game.map.y * 30, game.map.x * 30, "so_long", true);
 	if (!game.mlx)
 		error(ERR_MLX);

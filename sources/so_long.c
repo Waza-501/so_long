@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/09 17:48:17 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 08:22:17 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ static void	tracker_reset(t_data *data)
 	data->track_p = 0;
 }
 
+void	f(void)
+{
+	system("leaks so_long");
+}
+
 int	main(int argc, char **argv)
 {
 	t_data		data;
 	t_game		game;
-	int			xi;
-	int			yi;
 
 	errno = 0;
-	xi = 0;
-	yi = 0;
+	atexit (f);
 	if (argc != 2)
 		error(ERR_INPUT);
 	else if (file_check(argv[1]))
@@ -43,7 +45,6 @@ int	main(int argc, char **argv)
 	tracker_reset(&data);
 	validate_map(&game.map, &data);
 	copy_player_data(&game);
-	printf("map player x:%i\nmap player y:%i\n", game.player.x, game.player.y);
 	build_game(game);
 	return (0);
 }
