@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:28:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/10 21:06:39 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 11:12:07 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	create_world(t_game *game)
 	wall = mlx_load_png("./textures/Water.png");
 	grass = mlx_load_png("./textures/GrassPattern.png");
 	game->world.wrld = mlx_new_image(game->mlx, game->map.y * 30,
-		game->map.x * 30);
+			game->map.x * 30);
 	while (game->map.map[xi])
 	{
 		yi = 0;
@@ -92,4 +92,5 @@ void	build_game(t_game	game)
 	mlx_key_hook(game.mlx, &ft_keyhook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
+	system("leaks -q so_long");
 }

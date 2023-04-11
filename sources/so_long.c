@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 08:22:17 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 11:03:36 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,12 @@ static void	tracker_reset(t_data *data)
 	data->track_p = 0;
 }
 
-void	f(void)
-{
-	system("leaks so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	t_data		data;
 	t_game		game;
 
 	errno = 0;
-	atexit (f);
 	if (argc != 2)
 		error(ERR_INPUT);
 	else if (file_check(argv[1]))

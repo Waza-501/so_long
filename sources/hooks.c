@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:20:02 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/09 18:26:12 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 10:18:30 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	move_left(t_game *game)
 	}
 	game->mvmnt = 1;
 }
+
 static void	move_down(t_game *game)
 {
 	int	x;

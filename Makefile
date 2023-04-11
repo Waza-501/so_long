@@ -1,6 +1,6 @@
 NAME :=					so_long
 CC := 					gcc
-CFLAGS :=				-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS :=				-Wall -Werror -Wextra -g
 MLX_FLAGS :=			-I include -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
 MLX_FLAGS_MACBOOK :=	-Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 
@@ -28,7 +28,7 @@ OBJECTS :=		$(addprefix $(OBJECT_DIR)/, $(SOURCES:.c=.o))
 all:	libraries $(NAME)
 
 $(NAME):		$(OBJECTS) 
-					$(CC) $(CFLAGS) $(MLX_FLAGS_MACBOOK) $(LIBRARIES) -o $@ $^ $(HEADERS)
+					$(CC) $(CFLAGS) $(MLX_FLAGS) $(LIBRARIES) -o $@ $^ $(HEADERS)
 
 
 $(OBJECT_DIR)/%.o:	$(SOURCE_DIR)/%.c
