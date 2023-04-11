@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 15:44:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/06 18:03:45 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/11 16:12:18 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ static void	copy_map(t_map *dst, t_map *src)
 	dst->player[0] = src->player[0];
 	dst->player[1] = src->player[1];
 	dst->map = ft_calloc2(sizeof(char *), src->x + 1);
+	if (!dst->map)
+		error(ERR_MM);
 	while (src->map[xi])
 	{
 		dst->map[xi] = ft_calloc2(sizeof(char), src->y + 1);
+		if (!dst->map[xi])
+			error(ERR_MM);
 		while (src->map[xi][yi])
 		{
 			dst->map[xi][yi] = src->map[xi][yi];

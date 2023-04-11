@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:26 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/10 21:06:25 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 16:09:55 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	open_map(char *path, t_map *map)
 	if (fd < 0)
 		error(ERR_FD);
 	map->map = ft_calloc2(sizeof(char *), i + 1);
+	if (!map->map)
+		error(ERR_MM);
 	i = compare_line(map, size, fd, i);
 	while (map->map[i - 1] != NULL)
 	{

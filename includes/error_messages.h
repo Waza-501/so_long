@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 15:04:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/03/30 16:33:00 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/11 16:09:17 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define ERR_INPUT		"Input error. Please format it as ./so_long <MAP FILE>"
 # define ERR_FT			"File type incorrect. Please use maps ending in .ber"
 # define ERR_FD			"Couldn't open file. Please try again."
+# define ERR_MM			"Malloc related issue. Please try again."
 # define ERR_MP_RECT    "Map size incorrect. Please use a rectangular map."
 # define ERR_MP_WALLS	"Map isn't surrounded by walls."
 # define ERR_MP_CHAR	"Invalid character found. Please remove it"

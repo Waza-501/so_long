@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:28:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 11:57:59 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/11 17:16:11 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,4 @@ void	build_game(t_game	game)
 	mlx_key_hook(game.mlx, &ft_keyhook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	system("leaks -q so_long");
 }
