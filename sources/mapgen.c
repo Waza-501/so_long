@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 14:28:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 11:12:07 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/11 11:57:59 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	place_player(t_game *game)
 {
 	mlx_texture_t	*character;
 
-	character = mlx_load_png("./textures/Char.png");
+	character = game->player.pmodel;
 	game->player.img = mlx_texture_to_image(game->mlx, character);
 }
 
@@ -34,8 +34,8 @@ static void	create_special(t_game *game)
 	mlx_texture_t	*exit;
 
 	xi = 0;
-	collect = mlx_load_png("./textures/Collect.png");
-	exit = mlx_load_png("./textures/Exit.png");
+	collect = game->world.collectible;
+	exit = game->world.exit;
 	while (game->map.map[xi])
 	{
 		yi = 0;
@@ -55,12 +55,12 @@ static void	create_world(t_game *game)
 {
 	int				xi;
 	int				yi;
-	mlx_texture_t	*wall;
+	mlx_texture_t	*water;
 	mlx_texture_t	*grass;
 
 	xi = 0;
-	wall = mlx_load_png("./textures/Water.png");
-	grass = mlx_load_png("./textures/GrassPattern.png");
+	water = game->world.water;
+	grass = game->world.grass;
 	game->world.wrld = mlx_new_image(game->mlx, game->map.y * 30,
 			game->map.x * 30);
 	while (game->map.map[xi])
@@ -69,7 +69,7 @@ static void	create_world(t_game *game)
 		while (game->map.map[xi][yi])
 		{
 			if (game->map.map[xi][yi] == '1')
-				mlx_draw_texture(game->world.wrld, wall, yi * 30, xi * 30);
+				mlx_draw_texture(game->world.wrld, water, yi * 30, xi * 30);
 			if (game->map.map[xi][yi] == '0' || game->map.map[xi][yi] == 'P')
 				mlx_draw_texture(game->world.wrld, grass, yi * 30, xi * 30);
 			yi++;

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:19:47 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/09 18:21:01 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 11:57:49 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ t_world	init_world(void)
 
 	wrld.mlx = NULL;
 	wrld.wrld = NULL;
+	wrld.water = mlx_load_png("./textures/Water.png");
+	wrld.grass = mlx_load_png("./textures/GrassPattern.png");
+	wrld.collectible = mlx_load_png("./textures/Collect.png");
+	wrld.exit = mlx_load_png("./textures/Exit.png");
 	return (wrld);
 }
 
@@ -44,6 +48,7 @@ t_player	init_player(void)
 	newplyr.x = 0;
 	newplyr.y = 0;
 	newplyr.img = NULL;
+	newplyr.pmodel = mlx_load_png("./textures/Char.png");
 	return (newplyr);
 }
 

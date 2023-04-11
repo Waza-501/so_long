@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/09 18:20:44 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/11 11:57:25 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_player
 	int				x;
 	int				y;
 	mlx_image_t		*img;
+	mlx_texture_t	*pmodel;
 }					t_player;
 
 /*structs to store map related data*/
@@ -41,8 +42,12 @@ typedef struct s_map
 
 typedef struct	s_world
 {
-	mlx_t		*mlx;
-	mlx_image_t	*wrld;
+	mlx_t			*mlx;
+	mlx_image_t		*wrld;
+	mlx_texture_t	*water;
+	mlx_texture_t	*grass;
+	mlx_texture_t	*collectible;
+	mlx_texture_t	*exit;
 }					t_world;
 
 /*struct to store general data*/
