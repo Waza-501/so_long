@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 16:07:38 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/11 17:26:09 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void			detect_collision(t_game *game, int x, int y);
 /*utils*/
 void			error(char *err_msg);
 void			*ft_realloc(void *ptr, size_t size);
-
-/*test functions*/
 void			ft_keyhook(mlx_key_data_t keydata, void *input);
 void			build_game(t_game game);
 void			copy_player_data(t_game *game);
