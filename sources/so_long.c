@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:00:23 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 11:03:36 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/12 16:13:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,34 @@ static void	tracker_reset(t_data *data)
 	data->track_c = 0;
 	data->track_e = 0;
 	data->track_p = 0;
+}
+
+void	free_textures(t_game *game)
+{
+	if (game->world.grass)
+		mlx_delete_texture(game->world.grass);
+	if (game->world.water)
+		mlx_delete_texture(game->world.water);
+	if (game->world.collectible)
+		mlx_delete_texture(game->world.collectible);
+	if (game->world.exit)
+		mlx_delete_texture(game->world.exit);
+	if (game->player.pmodel)
+		mlx_delete_texture(game->player.pmodel);
+}
+
+void	free_game(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->map.map[i])
+	{
+		free(game->map.map[i]);
+		i++;
+	}
+	free(game->map.map);
+	free_textures(game);
 }
 
 int	main(int argc, char **argv)
@@ -40,5 +68,6 @@ int	main(int argc, char **argv)
 	validate_map(&game.map, &data);
 	copy_player_data(&game);
 	build_game(game);
+	free_game(&game);
 	return (0);
 }

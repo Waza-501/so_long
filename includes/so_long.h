@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 14:07:17 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/11 17:26:09 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/12 15:24:02 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_map
 	int		collectibles;
 }					t_map;
 
-typedef struct	s_world
+typedef struct s_world
 {
 	mlx_t			*mlx;
 	mlx_image_t		*wrld;
