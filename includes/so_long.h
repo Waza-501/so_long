@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/13 16:48:58 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/19 17:19:24 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <errno.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libraries/libft/libft.h"
 
@@ -30,8 +31,11 @@ typedef struct s_map
 	char	**map;
 	int		x;
 	int		y;
-	int		max_x;
-	int		max_y;
+	size_t	max_x;
+	size_t	max_y;
+	int		token_c;
+	int		token_e;
+	int		token_p;
 }			t_map;
 
 typedef struct s_game
@@ -41,12 +45,15 @@ typedef struct s_game
 	t_map			map;
 	int				width;
 	int				height;
-	
 }			t_game;
 
-void		copy_map(t_map map, char *filename, int fd);
+void		check_rectangle(t_map *map);
+void		validate_map(t_map *map);
+void		copy_map(t_map *map, int fd);
+void		prepare_map(t_map *map, char *filename);
 t_map		init_map(void);
 t_game		init_structs(void);
-int			tester(int	num);
+int			tester(int num);
+void		exit_error(char	*error_code);
 
 #endif

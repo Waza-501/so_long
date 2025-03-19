@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_realloc.c                                       :+:    :+:            */
+/*   error_and_free.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: owen <owen@student.codam.nl>                 +#+                     */
+/*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/03/12 12:47:11 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/19 16:54:00 by owhearn       ########   odam.nl         */
+/*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
+/*   Updated: 2025/03/19 12:17:46 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "so_long.h"
 
-void	*ft_realloc(void *src, size_t type, size_t size)
+void	exit_error(char	*error_code)
 {
-	char	*copy;
-
-	copy = NULL;
-	copy = ft_calloc(type, size);
-	if (!copy)
-		return (NULL);
-	ft_memcpy(copy, src, type * size);
-	free(src);
-	return (copy);
+	ft_putendl_fd("ERROR", 2);
+	if (errno == 0)
+		ft_putendl_fd(error_code, 2);
+	else
+		perror(error_code);
+	exit(-1);
 }

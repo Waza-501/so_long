@@ -1,6 +1,6 @@
 NAME			:=	so_long
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra
+CFLAGS			:=	-Wall -Werror -Wextra -g -fsanitize=address
 MLX_FLAGS		:= -Iinclude -ldl -lglfw -pthread -lm
 
 LIBRARIES		:=	./libraries/libft/libft.a\
@@ -10,7 +10,9 @@ LIBFT			:= ./libraries/libft
 MLX42			:= ./MLX42/build
 
 SOURCES_DIR		:=	sources/
-SOURCES			:=	initialize_structs.c\
+SOURCES			:=	error_and_free.c\
+					initialize_structs.c\
+					prepare_map.c\
 					so_long.c\
 					validate_map.c\
 					

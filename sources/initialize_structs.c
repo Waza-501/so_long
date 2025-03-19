@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:56 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/13 16:59:48 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/19 17:20:02 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_map	init_map(void)
 	map.y = 0;
 	map.max_x = 0;
 	map.max_y = 0;
+	map.token_c = 0;
+	map.token_e = 0;
+	map.token_p = 0;
 	return (map);
 }
 
