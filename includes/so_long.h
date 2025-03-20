@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/19 17:19:24 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/20 16:01:56 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libraries/libft/libft.h"
 
+# define SUCCESS 0
+# define FAILURE 1
+
 typedef struct s_player_data
 {
 	int		player_x;
 	int		player_y;
+	int		collectibles;
 }			t_player_data;
 
 typedef struct s_map
