@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/20 16:01:56 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/20 16:41:27 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_player_data
 typedef struct s_map
 {
 	char	**map;
-	int		x;
-	int		y;
+	int		p_spawn[2];
+	int		e_spawn[2];
 	size_t	max_x;
 	size_t	max_y;
 	int		token_c;

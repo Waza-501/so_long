@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:33 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/20 16:37:37 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/20 16:40:06 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	id_tile(t_map *map, char c)
 	else if (c == 'P')
 		map->token_p++;
 	else if (c == 'E')
+	{
 		map->token_e++;
+	}
 	return (SUCCESS);
 }
 

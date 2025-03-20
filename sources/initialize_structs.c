@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:56 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/19 17:20:02 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/20 16:42:46 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ t_map	init_map(void)
 	t_map	map;
 
 	map.map = NULL;
-	map.x = 0;
-	map.y = 0;
+	map.p_spawn[0] = 0;
+	map.p_spawn[1] = 0;
+	map.e_spawn[0] = 0;
+	map.e_spawn[1] = 0;
 	map.max_x = 0;
 	map.max_y = 0;
 	map.token_c = 0;
