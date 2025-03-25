@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:33 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/24 17:22:05 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/25 16:23:46 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	check_rectangle(t_map *map)
 	size_t	i_y;
 
 	i_y = 0;
-	while (i_y <= map->max_y)
+	while (i_y < map->max_y)
 	{
-		if ((ft_strlen(map->map[i_y]) - 1)!= map->max_x)
+		if ((ft_strlen(map->map[i_y])) != map->max_x)
 			exit_error(MAP_RECT);
 		i_y++;
 	}
@@ -53,14 +53,15 @@ void	check_valid_tokens(t_map *map)
 	size_t	i_y;
 
 	i_y = 0;
-	while (i_y <= map->max_y)
+	while (i_y < map->max_y)
 	{
 		i_x = 0;
-		while (i_x <= map->max_x)
+		while (i_x < map->max_x)
 		{
 			if (id_tile(map, map->map[i_y][i_x], i_y, i_x))
 				exit_error(MAP_CHAR);
-			if (i_y == 0 || i_x == 0 || i_y == map->max_y || i_x == map->max_x)
+			if (i_y == 0 || i_x == 0 || i_y == map->max_y - 1
+				|| i_x == map->max_x - 1)
 				if (map->map[i_y][i_x] != '1')
 					exit_error(MAP_WALLS);
 			i_x++;
@@ -81,8 +82,6 @@ void	validate_map(t_map *map)
 
 	copy = map;
 	check_rectangle(copy);
-	printf("is rectangle :D\n");
 	check_valid_tokens(copy);
-	printf("is valid :D\n");
-	check_solvable(copy);
+	solve_map(copy);
 }

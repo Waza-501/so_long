@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 15:18:28 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/24 17:19:27 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/25 13:57:31 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ and can be opened."
 # define MAP_EXIT		"The map needs a single exit."
 # define MAP_SPAWN		"The map needs a single spawn."
 # define MAP_UNSOLVABLE	"The map needs to be solvable."
+# define MLX_FAILED		"There was an issue with MLX. Please try again."
+# define MLX_LOAD_FAIL	"There was an issue loading the PNG."
 
 #endif

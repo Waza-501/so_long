@@ -11,9 +11,12 @@ MLX42			:= ./MLX42/build
 
 SOURCES_DIR		:=	sources/
 SOURCES			:=	error_and_free.c\
+					hooks.c\
 					initialize_structs.c\
 					prepare_map.c\
 					so_long.c\
+					solve_map.c\
+					start_game.c\
 					validate_map.c\
 					
 

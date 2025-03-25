@@ -6,11 +6,18 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/24 18:17:17 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/25 16:26:25 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_textures(void)
+{
+	char	*placeholder;
+
+	placeholder = NULL;
+}
 
 void	free_map(t_map *map)
 {

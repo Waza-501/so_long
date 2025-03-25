@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:19:12 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/24 18:52:39 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/25 12:46:47 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	pull_map_from_file(t_map *map, int fd)
 		map->map = ft_realloc(map->map, sizeof(char *), idx + 1);
 		map->map[idx] = get_next_line(fd);
 	}
-	map->max_y = (idx -1);
-	map->max_x = ft_strlen(map->map[0]) - 1;
+	map->max_y = idx;
+	map->max_x = ft_strlen(map->map[0]);
 }
 
 void	prepare_map(t_map *map, char *filename)
@@ -47,5 +47,4 @@ void	prepare_map(t_map *map, char *filename)
 		exit_error(FD_ERROR);
 	pull_map_from_file(map, fd);
 	validate_map(map);
-	exit(0);
 }

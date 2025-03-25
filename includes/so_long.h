@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/24 18:52:39 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/25 17:32:34 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,20 @@
 
 typedef struct s_player_data
 {
-	int		player_x;
-	int		player_y;
-	int		collectibles;
-}			t_player_data;
+	int				player_x;
+	int				player_y;
+	int				collectibles;
+	mlx_texture_t	*pmodel;
+}					t_player_data;
+
+typedef struct s_textures
+{
+	mlx_texture_t		*wall;
+	mlx_texture_t		*floor;
+	mlx_texture_t		*collec;
+	mlx_texture_t		*exit;
+	mlx_image_t			*world;
+}						t_textures;
 
 typedef struct s_map
 {
@@ -47,11 +57,14 @@ typedef struct s_game
 	mlx_t			*mlx;
 	t_player_data	*player;
 	t_map			map;
+	t_textures		tex;
+	mlx_image_t		*counter;
 	int				width;
 	int				height;
 }			t_game;
 
-
+void		ft_hooky(mlx_key_data_t key, void *input);
+void		start_game(t_game *game);
 void		solve_map(t_map *map);
 void		check_rectangle(t_map *map);
 void		validate_map(t_map *map);
