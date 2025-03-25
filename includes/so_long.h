@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/25 17:32:34 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/25 18:32:37 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_game
 	t_map			map;
 	t_textures		tex;
 	mlx_image_t		*counter;
+	int				moves;
 	int				width;
 	int				height;
 }			t_game;

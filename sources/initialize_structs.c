@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:56 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/25 15:53:53 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/25 18:32:51 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_game	init_structs(void)
 	game.player = NULL;
 	game.map = init_map();
 	game.tex = init_textures();
+	game.moves = 0;
 	game.width = 0;
 	game.height = 0;
 	return (game);
