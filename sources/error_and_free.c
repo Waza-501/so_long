@@ -6,11 +6,24 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/19 12:17:46 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/24 18:17:17 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (map->map[i])
+	{
+		free(map->map[i]);
+		i++;
+	}
+	free(map->map);
+}
 
 void	exit_error(char	*error_code)
 {

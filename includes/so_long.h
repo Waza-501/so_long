@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/20 16:41:27 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/24 18:52:39 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,16 @@ typedef struct s_game
 	int				height;
 }			t_game;
 
+
+void		solve_map(t_map *map);
 void		check_rectangle(t_map *map);
 void		validate_map(t_map *map);
-void		copy_map(t_map *map, int fd);
+void		pull_map_from_file(t_map *map, int fd);
 void		prepare_map(t_map *map, char *filename);
 t_map		init_map(void);
 t_game		init_structs(void);
 int			tester(int num);
+void		free_map(t_map *map);
 void		exit_error(char	*error_code);
 
 #endif

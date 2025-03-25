@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:19:12 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/20 16:32:18 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/24 18:52:39 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "err_codes.h"
 #include <fcntl.h>
 
-void	copy_map(t_map *map, int fd)
+void	pull_map_from_file(t_map *map, int fd)
 {
 	int		idx;
 	size_t	size;
@@ -45,7 +45,7 @@ void	prepare_map(t_map *map, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		exit_error(FD_ERROR);
-	copy_map(map, fd);
+	pull_map_from_file(map, fd);
 	validate_map(map);
 	exit(0);
 }

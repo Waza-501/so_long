@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 15:18:28 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/20 15:56:13 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/24 17:19:27 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,10 @@ and can be opened."
 # define MAP_RECT		"Please make sure the map is a rectangle."
 # define MAP_CHAR		"Invalid character found. The accepted characters are\
  0, 1, C, E, P."
+# define MAP_WALLS		"The borders of the map need to be walls."
+# define MAP_COL		"The map needs at least one collectible."
+# define MAP_EXIT		"The map needs a single exit."
+# define MAP_SPAWN		"The map needs a single spawn."
+# define MAP_UNSOLVABLE	"The map needs to be solvable."
+
 #endif
