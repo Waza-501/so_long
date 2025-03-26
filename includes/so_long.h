@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/26 10:56:28 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/26 17:00:10 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_player_data
 	int				player_x;
 	int				player_y;
 	int				collectibles;
-	mlx_texture_t	*pmodel;
 }					t_player_data;
 
 typedef struct s_textures
@@ -37,6 +36,7 @@ typedef struct s_textures
 	mlx_texture_t		*floor;
 	mlx_texture_t		*collec;
 	mlx_texture_t		*exit;
+	mlx_texture_t		*pmodel;
 	mlx_image_t			*world;
 }						t_textures;
 
@@ -64,19 +64,20 @@ typedef struct s_game
 	int				height;
 }			t_game;
 
-
+void		free_game(t_game *game);
+void		update_counter(t_game *game);
 void		free_textures(t_game *game);
 void		ft_hooky(mlx_key_data_t key, void *input);
 void		start_game(t_game *game);
-void		solve_map(t_map *map);
-void		check_rectangle(t_map *map);
-void		validate_map(t_map *map);
-void		pull_map_from_file(t_map *map, int fd);
-void		prepare_map(t_map *map, char *filename);
+void		solve_map(t_map *map, t_game *game);
+void		check_rectangle(t_map *map, t_game *game);
+void		validate_map(t_map *map, t_game *game);
+void		pull_map_from_file(t_map *map, int fd, t_game *game);
+void		prepare_map(t_map *map, char *filename, t_game *game);
 t_map		init_map(void);
 t_game		init_structs(void);
 int			tester(int num);
 void		free_map(t_map *map);
-void		exit_error(char	*error_code);
+void		exit_error(char	*error_code, t_game *game);
 
 #endif

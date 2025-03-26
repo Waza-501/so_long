@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 09:28:43 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/26 11:25:10 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/26 17:11:05 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@ int	map_type_valid(char *file)
 
 	size = ft_strlen(file);
 	if (size < 4 || ft_strncmp(&file[size - 4], ".ber", 4))
-		exit_error(FILE_TYPE);
+		exit_error(FILE_TYPE, NULL);
 	return (0);
 }
 
 void	end_game(t_game *game)
 {
-	
-	free_map(game->map);
+	free_game(game);
 }
 
 int	main(int argc, char **argv)
@@ -34,10 +33,11 @@ int	main(int argc, char **argv)
 	t_game		game;
 
 	if (argc != 2)
-		exit_error(INPUT_ERR);
+		exit_error(INPUT_ERR, NULL);
 	map_type_valid(argv[1]);
 	game = init_structs();
-	prepare_map(&game.map, argv[1]);
+	prepare_map(&game.map, argv[1], &game);
+	return (0);
 	start_game(&game);
 	end_game(&game);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/25 13:09:01 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/26 10:59:30 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/26 17:02:56 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,40 @@
 void	set_background(t_game *game)
 {
 	int			i_y;
-	mlx_image_t	*img;
-	//int		i_x;
+	int			i_x;
+	mlx_image_t	*walls;
+	mlx_image_t	*floor;
 
-	(void)i_y;
+	i_y = 0;
+	walls = mlx_texture_to_image(game->mlx, game->tex.wall);
+	floor = mlx_texture_to_image(game->mlx, game->tex.floor);
+	if (!walls || !floor)
+		exit_error(MLX_LOAD_FAIL, game);
 	game->tex.world = mlx_new_image(game->mlx, game->map.max_x * 64,
 			game->map.max_y * 64);
-	img = mlx_texture_to_image(game->mlx, game->tex.wall);
-	mlx_image_to_window(game->mlx, img, 0, 0);
-	mlx_image_to_window(game->mlx, img, 0, 64);
-	mlx_image_to_window(game->mlx, img, 0, 128);
-	mlx_image_to_window(game->mlx, img, 0, 196);
-	mlx_image_to_window(game->mlx, img, 64, 0);
-	mlx_image_to_window(game->mlx, img, 128, 0);
-	mlx_image_to_window(game->mlx, img, 196, 0);
-	mlx_image_to_window(game->mlx, img, 256, 0);
-	game->counter = mlx_put_string(game->mlx, "testing :D", 0, 0);
+	while (game->map.map[i_y])
+	{
+		i_x = 0;
+		while (game->map.map[i_y][i_x])
+		{
+			if (game->map.map[i_y][i_x] == '1')
+				mlx_image_to_window(game->mlx, walls, i_x * 64, i_y * 64);
+			else
+				mlx_image_to_window(game->mlx, floor, i_x * 64, i_y * 64);
+			i_x++;
+		}
+		i_y++;
+	}
 }
 
 void	start_game(t_game *game)
 {
-	printf("dimensions are %zu %zu\n", game->map.max_y, game->map.max_x);
 	game->mlx = mlx_init(game->map.max_x * 64, game->map.max_y * 64, "so_long",
 			true);
 	if (!game->mlx)
-		exit_error(MLX_FAILED);
+		exit_error(MLX_FAILED, game);
 	set_background(game);
 	mlx_key_hook(game->mlx, &ft_hooky, game);
 	mlx_loop(game->mlx);
-	free_textures(game);
 	mlx_terminate(game->mlx);
 }

@@ -1,6 +1,6 @@
 NAME			:=	so_long
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS			:=	-Wall -Werror -Wextra
 MLX_FLAGS		:= -Iinclude -ldl -lglfw -pthread -lm
 
 LIBRARIES		:=	./libraries/libft/libft.a\
@@ -17,6 +17,7 @@ SOURCES			:=	error_and_free.c\
 					so_long.c\
 					solve_map.c\
 					start_game.c\
+					utils.c\
 					validate_map.c\
 					
 
