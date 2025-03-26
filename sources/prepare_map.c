@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:19:12 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/26 23:57:27 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/27 00:32:27 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	pull_map_from_file(t_map *map, int fd, t_game *game, int lines)
 	size_t	size;
 
 	idx = 0;
-	map->map = ft_calloc(sizeof(char *), lines);
+	(void)lines;
+	//map->map = ft_calloc(sizeof(char *), lines);
+	map->map = ft_calloc(sizeof(char *), (idx + 1));
 	if (!map->map)
 		exit_error(MEM_ERROR, game);
 	map->map[idx] = get_next_line(fd);
@@ -30,7 +32,7 @@ void	pull_map_from_file(t_map *map, int fd, t_game *game, int lines)
 		if (map->map[idx][size - 1] == '\n')
 			map->map[idx][size - 1] = '\0';
 		idx++;
-		//map->map = ft_realloc(map->map, sizeof(char *), idx + 1);
+		map->map = ft_realloc(map->map, sizeof(char *), idx + 1);
 		map->map[idx] = get_next_line(fd);
 	}
 	map->max_y = idx;
