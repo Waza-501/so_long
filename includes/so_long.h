@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/26 17:00:10 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/26 23:57:56 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		start_game(t_game *game);
 void		solve_map(t_map *map, t_game *game);
 void		check_rectangle(t_map *map, t_game *game);
 void		validate_map(t_map *map, t_game *game);
-void		pull_map_from_file(t_map *map, int fd, t_game *game);
+void		pull_map_from_file(t_map *map, int fd, t_game *game, int lines);
 void		prepare_map(t_map *map, char *filename, t_game *game);
 t_map		init_map(void);
 t_game		init_structs(void);
