@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:19:12 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/25 12:46:47 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/26 11:21:05 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	pull_map_from_file(t_map *map, int fd)
 		size = ft_strlen(map->map[idx]);
 		if (map->map[idx][size - 1] == '\n')
 			map->map[idx][size - 1] = '\0';
-		printf("%s\n", map->map[idx]);
+		//printf("%s\n", map->map[idx]);
 		idx++;
 		map->map = ft_realloc(map->map, sizeof(char *), idx + 1);
 		map->map[idx] = get_next_line(fd);
@@ -46,5 +46,6 @@ void	prepare_map(t_map *map, char *filename)
 	if (fd == -1)
 		exit_error(FD_ERROR);
 	pull_map_from_file(map, fd);
+	close(fd);
 	validate_map(map);
 }

@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/25 18:32:37 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/26 10:56:28 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ typedef struct s_game
 	int				height;
 }			t_game;
 
+
+void		free_textures(t_game *game);
 void		ft_hooky(mlx_key_data_t key, void *input);
 void		start_game(t_game *game);
 void		solve_map(t_map *map);

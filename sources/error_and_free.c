@@ -6,17 +6,24 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/25 16:26:25 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/26 11:11:37 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_textures(void)
+void	free_textures(t_game *game)
 {
-	char	*placeholder;
-
-	placeholder = NULL;
+	if (game->tex.wall)
+		mlx_delete_texture(game->tex.wall);
+	if (game->tex.floor)
+		mlx_delete_texture(game->tex.floor);
+	if (game->tex.collec)
+		mlx_delete_texture(game->tex.collec);
+	if (game->tex.exit)
+		mlx_delete_texture(game->tex.exit);
+	//if (game->player->pmodel)
+		//mlx_delete_texture(game->player->pmodel);
 }
 
 void	free_map(t_map *map)

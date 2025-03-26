@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 09:28:43 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/25 16:23:06 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/26 11:25:10 by owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	map_type_valid(char *file)
 	return (0);
 }
 
+void	end_game(t_game *game)
+{
+	
+	free_map(game->map);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game		game;
@@ -33,7 +39,6 @@ int	main(int argc, char **argv)
 	game = init_structs();
 	prepare_map(&game.map, argv[1]);
 	start_game(&game);
-	//end_game(&game);
-	printf("boop\n");
+	end_game(&game);
 	return (0);
 }
