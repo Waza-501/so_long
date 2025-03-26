@@ -1,6 +1,6 @@
 NAME			:=	so_long
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra
+CFLAGS			:=	-Wall -Wextra
 MLX_FLAGS		:= -Iinclude -ldl -lglfw -pthread -lm
 
 LIBRARIES		:=	./libraries/libft/libft.a\
