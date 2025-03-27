@@ -1,6 +1,6 @@
 NAME			:=	so_long
 CC				:=	cc
-CFLAGS			:=	-Wall -Wextra
+CFLAGS			:=	-Wall -Werror -Wextra
 MLX_FLAGS		:= -Iinclude -ldl -lglfw -pthread -lm
 
 LIBRARIES		:=	./libraries/libft/libft.a\
@@ -13,6 +13,7 @@ SOURCES_DIR		:=	sources/
 SOURCES			:=	error_and_free.c\
 					hooks.c\
 					initialize_structs.c\
+					movement.c\
 					prepare_map.c\
 					so_long.c\
 					solve_map.c\

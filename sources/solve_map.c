@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/24 17:41:30 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/26 16:58:32 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/27 16:41:15 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,10 @@ void	fill_map(t_map *map, int i_y, int i_x)
 void	solve_map(t_map *map, t_game *game)
 {
 	t_map	copy;
-	//int		i;
 
 	copy = init_map();
 	copy_map(map, &copy, game);
 	fill_map(&copy, map->p_spawn[0], map->p_spawn[1]);
-	/*i = 0;
-	while (copy.map[i])
-	{
-		printf("%s\n", copy.map[i]);
-		i++;
-	}*/
 	if (copy.token_c != map->token_c || copy.token_e != map->token_e)
 		exit_error(MAP_UNSOLVABLE, game);
 	free_map(&copy);

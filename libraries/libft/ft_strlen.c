@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.42.fr>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/07 12:26:07 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/11 14:15:48 by owen          ########   odam.nl         */
+/*   Updated: 2025/03/27 13:17:32 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *s)
 	size_t	tally;
 
 	tally = 0;
+	if (!s)
+		return (tally);
 	while (*s && s[tally])
 		tally++;
 	return (tally);
