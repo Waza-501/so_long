@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 10:34:29 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/27 19:40:55 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:34:28 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,12 @@ typedef struct s_game
 	mlx_t			*mlx;
 	t_player_data	*player;
 	t_map			map;
+	t_map			copy;
 	t_textures		*tex;
 	mlx_image_t		*collectable;
 	mlx_image_t		*counter;
 	bool			endgame;
 	int				moves;
-	int				width;
-	int				height;
 }			t_game;
 
 /*Movement.c*/

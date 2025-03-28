@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/24 17:41:30 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/28 17:26:53 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:39:05 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fill_map(t_game *game, int i_y, int i_x, int sop)
 {
 	t_map	*map;
 
-	map = &game->map;
+	map = &game->copy;
 	if (sop >= 10000)
 		exit_error(SOP, game);
 	if (map->map[i_y][i_x] == 'C')
@@ -54,12 +54,9 @@ void	fill_map(t_game *game, int i_y, int i_x, int sop)
 
 void	solve_map(t_map *map, t_game *game)
 {
-	t_map	copy;
-
-	copy = init_map();
-	copy_map(map, &copy, game);
-	fill_map(&copy, map->p_spawn[0], map->p_spawn[1], 0);
-	if (copy.token_c != map->token_c || copy.token_e != map->token_e)
+	copy_map(map, &game->copy, game);
+	fill_map(game, map->p_spawn[0], map->p_spawn[1], 0);
+	if (game->copy.token_c != map->token_c || game->copy.token_e != map->token_e)
 		exit_error(MAP_UNSOLVABLE, game);
-	free_map(&copy);
+	free_map(&game->copy);
 }

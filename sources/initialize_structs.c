@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:56 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/27 19:25:14 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:36:27 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,11 @@ t_game	init_structs(void)
 	game.mlx = NULL;
 	game.player = NULL;
 	game.map = init_map();
+	game.copy = init_map();
 	game.tex = NULL;
 	game.collectable = NULL;
 	game.counter = NULL;
 	game.endgame = false;
 	game.moves = 0;
-	game.width = 0;
-	game.height = 0;
 	return (game);
 }
