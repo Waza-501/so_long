@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/24 17:41:30 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/28 17:39:05 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:42:23 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	solve_map(t_map *map, t_game *game)
 {
 	copy_map(map, &game->copy, game);
 	fill_map(game, map->p_spawn[0], map->p_spawn[1], 0);
-	if (game->copy.token_c != map->token_c || game->copy.token_e != map->token_e)
+	if (game->copy.token_c != map->token_c || \
+			game->copy.token_e != map->token_e)
 		exit_error(MAP_UNSOLVABLE, game);
 	free_map(&game->copy);
 }
