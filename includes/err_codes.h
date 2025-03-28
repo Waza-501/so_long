@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 15:18:28 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/25 13:57:31 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:28:01 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define ERR_CODES_H
 # define INPUT_ERR		"Input error. Please use ./so_long <FILE.ber>."
 # define FILE_TYPE		"There was an error reading the map. Please make sure\
-the map is a .ber file."
+ the map is a .ber file."
 # define FD_ERROR		"File could not be opened. Make sure the file exists\
-and can be opened."
+ and can be opened."
 # define MEM_ERROR		"There was an issue allocating memory."
 # define MAP_RECT		"Please make sure the map is a rectangle."
 # define MAP_CHAR		"Invalid character found. The accepted characters are\
@@ -28,5 +28,7 @@ and can be opened."
 # define MAP_UNSOLVABLE	"The map needs to be solvable."
 # define MLX_FAILED		"There was an issue with MLX. Please try again."
 # define MLX_LOAD_FAIL	"There was an issue loading the PNG."
+# define SOP			"a thing of no great value given or done as a concession\
+ to appease someone whose main concerns or demands are not being met."
 
 #endif

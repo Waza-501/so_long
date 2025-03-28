@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/24 17:41:30 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/27 16:41:15 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:26:53 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,26 @@ void	copy_map(t_map *map, t_map *copy, t_game *game)
 	}
 }
 
-void	fill_map(t_map *map, int i_y, int i_x)
+void	fill_map(t_game *game, int i_y, int i_x, int sop)
 {
+	t_map	*map;
+
+	map = &game->map;
+	if (sop >= 10000)
+		exit_error(SOP, game);
 	if (map->map[i_y][i_x] == 'C')
 		map->token_c++;
 	if (map->map[i_y][i_x] == 'E')
 		map->token_e++;
 	map->map[i_y][i_x] = 'X';
 	if (map->map[i_y + 1][i_x] != 'X' && map->map[i_y + 1][i_x] != '1')
-		fill_map(map, i_y + 1, i_x);
+		fill_map(game, i_y + 1, i_x, sop + 1);
 	if (map->map[i_y - 1][i_x] != 'X' && map->map[i_y - 1][i_x] != '1')
-		fill_map(map, i_y - 1, i_x);
+		fill_map(game, i_y - 1, i_x, sop + 1);
 	if (map->map[i_y][i_x + 1] != 'X' && map->map[i_y][i_x + 1] != '1')
-		fill_map(map, i_y, i_x + 1);
+		fill_map(game, i_y, i_x + 1, sop + 1);
 	if (map->map[i_y][i_x - 1] != 'X' && map->map[i_y][i_x - 1] != '1')
-		fill_map(map, i_y, i_x - 1);
+		fill_map(game, i_y, i_x - 1, sop + 1);
 }
 
 void	solve_map(t_map *map, t_game *game)
@@ -53,7 +58,7 @@ void	solve_map(t_map *map, t_game *game)
 
 	copy = init_map();
 	copy_map(map, &copy, game);
-	fill_map(&copy, map->p_spawn[0], map->p_spawn[1]);
+	fill_map(&copy, map->p_spawn[0], map->p_spawn[1], 0);
 	if (copy.token_c != map->token_c || copy.token_e != map->token_e)
 		exit_error(MAP_UNSOLVABLE, game);
 	free_map(&copy);

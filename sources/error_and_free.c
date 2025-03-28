@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/27 17:44:09 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 16:51:17 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	free_game(t_game *game)
 		mlx_terminate(game->mlx);
 	if (game->tex)
 		free_textures(game);
-	free_map(&game->map);
+	if (game->map.map)
+		free_map(&game->map);
 	free(game->player);
 	free(game->tex);
 }
