@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/19 12:17:22 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/28 17:41:16 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/03/28 17:49:53 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_map(t_map *map)
 		i++;
 	}
 	free(map->map);
+	map->map = NULL;
 }
 
 void	free_game(t_game *game)
@@ -48,7 +49,7 @@ void	free_game(t_game *game)
 	if (game->map.map)
 		free_map(&game->map);
 	if (game->copy.map)
-		free_map(&game->map);
+		free_map(&game->copy);
 	free(game->player);
 	free(game->tex);
 }
