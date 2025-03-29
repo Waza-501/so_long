@@ -1,12 +1,13 @@
 NAME			:=	so_long
 CC				:=	cc
-CFLAGS			:=	-Wall -Werror -Wextra
+CFLAGS			:=	-Wall -Wextra
 MLX_FLAGS		:= -Iinclude -ldl -lglfw -pthread -lm
 
 LIBRARIES		:=	./libraries/libft/libft.a\
 					./MLX42/build/libmlx42.a\
 
 LIBFT			:= ./libraries/libft
+MLX42_DIR		:= ./MLX42
 MLX42			:= ./MLX42/build
 
 SOURCES_DIR		:=	sources/
@@ -43,9 +44,16 @@ $(OBJECTS_DIR)%.o:	$(SOURCES_DIR)%.c
 					@mkdir -p $(dir $@)
 					$(CC) $(CFLAGS) $(HEADERS) -c -o $@ $< -O3
 
-libraries:	
+$(MLX42_DIR):
+		@if [ ! -d $(MLX42_DIR) ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
+		fi
+		@cmake $(MLX42_DIR) -B $(MLX42_DIR)/build
+		@$(MAKE) -C $(MLX42_DIR)/build -j4
+
+libraries:	$(MLX42_DIR)
 			$(MAKE) -C $(LIBFT)
-			$(MAKE) -C $(MLX42)
+			
 
 clean:
 			@rm -rf $(OBJECTS)
@@ -55,7 +63,8 @@ fclean:		clean
 			@rm -rf $(NAME)
 			@$(MAKE) -C $(LIBFT) fclean
 			@if [ -d "$(OBJECTS_DIR)" ]; then rm -drf $(OBJECTS_DIR); fi
-			@echo Cleaned up all created files.
+			@if [ -d "$(MLX42_DIR)" ]; then rm -drf $(MLX42_DIR); fi
+			@echo "$(GREEN)Cleaned up all created files.$(NO_COLOR)"
 
 re:	fclean all
 
