@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/25 18:05:54 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/28 10:28:38 by owen          ########   odam.nl         */
+/*   Updated: 2025/04/03 15:09:44 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	detect_col(t_game *game, int i_y, int i_x)
 	{
 		game->player->collectibles++;
 		game->map.map[i_y][i_x] = '0';
-		idx = find_instance(game, i_y * 64, i_x * 64);
+		idx = find_instance(game, i_y * 30, i_x * 30);
 		if (idx >= 0)
 			game->collectable->instances[idx].enabled = false;
 	}

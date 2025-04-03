@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/25 13:09:01 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/03/27 17:15:05 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/03 15:15:07 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_player(t_game *game)
 	if (!game->player->player)
 		exit_error(MLX_LOAD_FAIL, game);
 	mlx_image_to_window(game->mlx, game->player->player,
-		game->map.p_spawn[1] * 64, game->map.p_spawn[0] * 64);
+		game->map.p_spawn[1] * 30, game->map.p_spawn[0] * 30);
 }
 
 void	set_foreground(t_game *game, int i_y, int i_x)
@@ -32,15 +32,15 @@ void	set_foreground(t_game *game, int i_y, int i_x)
 	exit = mlx_texture_to_image(game->mlx, game->tex->exit);
 	if (!collec || !exit)
 		exit_error(MLX_LOAD_FAIL, game);
-	mlx_image_to_window(game->mlx, exit, game->map.e_spawn[1] * 64,
-		game->map.e_spawn[0] * 64);
+	mlx_image_to_window(game->mlx, exit, game->map.e_spawn[1] * 30,
+		game->map.e_spawn[0] * 30);
 	while (game->map.map[i_y])
 	{
 		i_x = 0;
 		while (game->map.map[i_y][i_x])
 		{
 			if (game->map.map[i_y][i_x] == 'C')
-				mlx_image_to_window(game->mlx, collec, i_x * 64, i_y * 64);
+				mlx_image_to_window(game->mlx, collec, i_x * 30, i_y * 30);
 			i_x++;
 		}
 		i_y++;
@@ -58,17 +58,17 @@ void	set_background(t_game *game, int i_y, int i_x)
 	floor = mlx_texture_to_image(game->mlx, game->tex->floor);
 	if (!walls || !floor)
 		exit_error(MLX_LOAD_FAIL, game);
-	game->tex->world = mlx_new_image(game->mlx, game->map.max_x * 64,
-			game->map.max_y * 64);
+	game->tex->world = mlx_new_image(game->mlx, game->map.max_x * 30,
+			game->map.max_y * 30);
 	while (game->map.map[i_y])
 	{
 		i_x = 0;
 		while (game->map.map[i_y][i_x])
 		{
 			if (game->map.map[i_y][i_x] == '1')
-				mlx_image_to_window(game->mlx, walls, i_x * 64, i_y * 64);
+				mlx_image_to_window(game->mlx, walls, i_x * 30, i_y * 30);
 			else
-				mlx_image_to_window(game->mlx, floor, i_x * 64, i_y * 64);
+				mlx_image_to_window(game->mlx, floor, i_x * 30, i_y * 30);
 			i_x++;
 		}
 		i_y++;
@@ -82,10 +82,12 @@ void	start_game(t_game *game)
 
 	i_y = 0;
 	i_x = 0;
+	if (game->map.max_y > 500 || game->map.max_x > 500)
+		exit_error(SOP, game);
 	game->player = init_p_data(game, game->map.p_spawn[0],
 			game->map.p_spawn[1]);
 	game->tex = init_textures(game);
-	game->mlx = mlx_init(game->map.max_x * 64, game->map.max_y * 64, "so_long",
+	game->mlx = mlx_init(game->map.max_x * 30, game->map.max_y * 30, "so_long",
 			true);
 	if (!game->mlx)
 		exit_error(MLX_FAILED, game);

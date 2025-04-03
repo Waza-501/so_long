@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/11 14:33:56 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/28 17:36:27 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/03 15:10:48 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,19 @@ t_textures	*init_textures(t_game *game)
 	textures = (t_textures *)malloc(sizeof(t_textures));
 	if (!textures)
 		exit_error(MEM_ERROR, game);
-	textures->wall = mlx_load_png("./textures/wall.png");
+	textures->wall = mlx_load_png("./textures/Water.png");
 	if (!textures->wall)
 		exit_error(MLX_LOAD_FAIL, game);
-	textures->floor = mlx_load_png("./textures/floor.png");
+	textures->floor = mlx_load_png("./textures/GrassPattern.png");
 	if (!textures->floor)
 		exit_error(MLX_LOAD_FAIL, game);
-	textures->collec = mlx_load_png("./textures/flower.png");
+	textures->collec = mlx_load_png("./textures/Collect.png");
 	if (!textures->collec)
 		exit_error(MLX_LOAD_FAIL, game);
-	textures->exit = mlx_load_png("./textures/Kaede.png");
+	textures->exit = mlx_load_png("./textures/Exit.png");
 	if (!textures->exit)
 		exit_error(MLX_LOAD_FAIL, game);
-	textures->pmodel = mlx_load_png("./textures/Shuichi.png");
+	textures->pmodel = mlx_load_png("./textures/Char.png");
 	if (!textures->pmodel)
 		exit_error(MLX_LOAD_FAIL, game);
 	textures->world = NULL;
