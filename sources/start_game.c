@@ -6,7 +6,7 @@
 /*   By: owhearn <owhearn@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/25 13:09:01 by owhearn       #+#    #+#                 */
-/*   Updated: 2025/04/03 15:15:07 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/03 15:25:25 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_player(t_game *game)
 {
 	game->player->player = mlx_texture_to_image(game->mlx, game->tex->pmodel);
 	if (!game->player->player)
-		exit_error(MLX_LOAD_FAIL, game);
+		exit_error(MLX_LOAD_TTI, game);
 	mlx_image_to_window(game->mlx, game->player->player,
 		game->map.p_spawn[1] * 30, game->map.p_spawn[0] * 30);
 }
@@ -31,7 +31,7 @@ void	set_foreground(t_game *game, int i_y, int i_x)
 	collec = mlx_texture_to_image(game->mlx, game->tex->collec);
 	exit = mlx_texture_to_image(game->mlx, game->tex->exit);
 	if (!collec || !exit)
-		exit_error(MLX_LOAD_FAIL, game);
+		exit_error(MLX_LOAD_TTI, game);
 	mlx_image_to_window(game->mlx, exit, game->map.e_spawn[1] * 30,
 		game->map.e_spawn[0] * 30);
 	while (game->map.map[i_y])
@@ -57,7 +57,7 @@ void	set_background(t_game *game, int i_y, int i_x)
 	walls = mlx_texture_to_image(game->mlx, game->tex->wall);
 	floor = mlx_texture_to_image(game->mlx, game->tex->floor);
 	if (!walls || !floor)
-		exit_error(MLX_LOAD_FAIL, game);
+		exit_error(MLX_LOAD_TTI, game);
 	game->tex->world = mlx_new_image(game->mlx, game->map.max_x * 30,
 			game->map.max_y * 30);
 	while (game->map.map[i_y])

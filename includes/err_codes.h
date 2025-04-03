@@ -6,7 +6,7 @@
 /*   By: owen <owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/04 15:18:28 by owen          #+#    #+#                 */
-/*   Updated: 2025/03/28 17:28:01 by owhearn       ########   odam.nl         */
+/*   Updated: 2025/04/03 15:24:16 by owhearn       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@
 # define MLX_LOAD_FAIL	"There was an issue loading the PNG."
 # define SOP			"a thing of no great value given or done as a concession\
  to appease someone whose main concerns or demands are not being met."
-
+# define MLX_LOAD_TTI	"There was an issue converting a texture to an image."
 #endif
